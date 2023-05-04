@@ -24,7 +24,7 @@ function Checkout(): JSX.Element {
       options={{
         mode: 'payment',
         currency: 'usd',
-        amount: grandTotal * 100 || 100,
+        amount: 100,
         appearance: {
           // theme: 'night',
         },

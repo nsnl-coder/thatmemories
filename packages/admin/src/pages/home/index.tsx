@@ -55,10 +55,10 @@ const HomeTable = (): JSX.Element => {
         <tbody>
           {homes?.map((home) => (
             <tr
-              key={home._id}
-              onClick={() => toggleRowSelection(home._id)}
+              key={home._id?.toString()}
+              onClick={() => toggleRowSelection(home._id?.toString())}
               className={
-                !!home._id && checkedBoxesIds.includes(home._id)
+                !!home._id && checkedBoxesIds.includes(home._id?.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -66,10 +66,10 @@ const HomeTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={home._id}
+                id={home._id?.toString()}
               />
               <TableLinkColumn
-                _id={home._id}
+                _id={home._id?.toString()}
                 requestConfig={queryConfig.homes}
                 text={home.versionName}
               />
@@ -80,9 +80,12 @@ const HomeTable = (): JSX.Element => {
               <StatusColumn
                 requestConfig={requestConfig}
                 status={home.status}
-                id={home._id}
+                id={home._id.toString()}
               />
-              <ActionsColumn requestConfig={requestConfig} id={home._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={home._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

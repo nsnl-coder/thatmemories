@@ -14,6 +14,8 @@ import createError from '../utils/createError';
 import { getCouponStatus } from './couponController';
 
 const createOrder = async (req: Request, res: Response, next: NextFunction) => {
+  console.log('ahahaha');
+
   let order: CreateOrderPayload = req.body;
   let { items, ...payload } = order;
 
@@ -188,8 +190,6 @@ const getUpdatedItems = (items: ICreateOrderPayloadItem[]): IOrderItem[] => {
 
     if (highestPrice > item.product.price!) {
       newItem.price = highestPrice;
-    } else {
-      newItem.price = item.product.price!;
     }
 
     if (photos.length) {

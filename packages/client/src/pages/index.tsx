@@ -6,11 +6,11 @@ import LatestNewsSection from '@src/_pages/home/LatestNewsSection';
 import PartnerSection from '@src/_pages/home/PartnerSection';
 import fetchData from '@src/config/fetchData';
 import { HttpResponse } from '@src/types/http';
-import { IPopulatedHome } from '@thatmemories/yup';
+import { IHome } from '@thatmemories/yup';
 import { GetStaticProps } from 'next';
 
 interface Props {
-  home: IPopulatedHome | undefined;
+  home: IHome | undefined;
 }
 
 export default function Home(props: Props) {
@@ -31,9 +31,15 @@ export default function Home(props: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const res = await fetchData<HttpResponse<IPopulatedHome>>(
+  const res = await fetchData<HttpResponse<IHome>>(
     '/api/homes/current-home-page',
   );
+
+  if (!res.data) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

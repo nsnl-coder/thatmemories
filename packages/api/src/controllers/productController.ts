@@ -57,7 +57,7 @@ const getRandomProducts = async (
             },
             {
               $sample: {
-                size: limit,
+                size: Number(limit) || 5,
               },
             },
             {

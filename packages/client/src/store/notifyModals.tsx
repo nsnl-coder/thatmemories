@@ -14,6 +14,7 @@ interface AlertModalsState {
   leftButtonLink?: string;
   rightButtonText?: string;
   rightButtonLink?: string;
+  cancelLink?: string;
 }
 
 const initialState: AlertModalsState = {
@@ -42,6 +43,7 @@ const notifyModalsSlice = createSlice({
       state.rightButtonLink = payload.rightButtonLink;
       state.leftButtonText = payload.leftButtonText;
       state.rightButtonText = payload.rightButtonText;
+      state.cancelLink = payload.cancelLink;
     },
     closeNotifyModal(state) {
       return initialState;

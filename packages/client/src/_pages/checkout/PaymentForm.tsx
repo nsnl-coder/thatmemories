@@ -1,14 +1,17 @@
 import { useAppSelector } from '@src/hooks/redux';
 import useCreateOrder from '@src/react-query/orders/useCreateOrder';
 import { CHECKOUT_PROGRESS } from '@src/store/checkout';
+import { openErrorModal } from '@src/store/notifyModals';
 import {
   PaymentElement,
   useElements,
   useStripe,
 } from '@stripe/react-stripe-js';
 import { useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function PaymentForm(): JSX.Element | null {
+  const dispatch = useDispatch();
   const elements = useElements();
   const stripe = useStripe();
 
@@ -39,11 +42,15 @@ function PaymentForm(): JSX.Element | null {
     });
 
     if (error) {
-      alert('something wentwring');
+      dispatch(
+        openErrorModal({
+          message: 'We can not process the payment at the moment.',
+        }),
+      );
     }
 
     reset();
-  }, [stripe, elements, order?.client_secret, reset]);
+  }, [stripe, elements, order?.client_secret, reset, dispatch]);
 
   useEffect(() => {
     if (isSuccess) {

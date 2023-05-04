@@ -1,12 +1,13 @@
 import RowContainer from '@components/container/RowContainer';
 import ProductCard from '@components/productCard/ProductCard';
 import useReactSlick from '@src/hooks/useReactSlick';
+import { ObjectId } from '@src/types/objectId';
 import { IProduct } from '@thatmemories/yup';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';
 
 interface Props {
-  featuredProducts: IProduct[] | undefined;
+  featuredProducts: IProduct[] | ObjectId[];
 }
 
 function FeaturedProducts(props: Props): JSX.Element | null {
@@ -54,15 +55,17 @@ function FeaturedProducts(props: Props): JSX.Element | null {
 
       <div className="relative group max-w-full overflow--verflow-visible pb-24">
         <Slider ref={sliderRef} {...settings} className="-mx-3">
-          {featuredProducts?.map((product) => (
-            <div className="px-3" key={product._id}>
-              <ProductCard
-                product={product}
-                className="h-60 md:h-80 lg:h-[450px]"
-                sizes="(max-width:768px) 50vw,(max-width:1024px) 33.33vw, 320px"
-              />
-            </div>
-          ))}
+          {featuredProducts?.map((product) =>
+            '_id' in product ? (
+              <div className="px-3" key={product._id}>
+                <ProductCard
+                  product={product}
+                  className="h-60 md:h-80 lg:h-[450px]"
+                  sizes="(max-width:768px) 50vw,(max-width:1024px) 33.33vw, 320px"
+                />
+              </div>
+            ) : null,
+          )}
         </Slider>
         <button
           onClick={prevSlide}

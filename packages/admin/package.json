@@ -59,6 +59,7 @@
     "@types/react-dom": "18.0.11",
     "@types/uuid": "^9.0.1",
     "autoprefixer": "^10.4.14",
+    "mongoose": "^7.1.0",
     "postcss": "^8.4.21"
   }
 }

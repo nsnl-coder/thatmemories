@@ -1,3 +1,4 @@
+import { ObjectId } from '@src/types/objectId';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +9,7 @@ export interface Checkbox {
 }
 
 interface TRowData {
-  _id?: string;
+  _id?: ObjectId;
   isPinned?: boolean;
 }
 
@@ -25,7 +26,7 @@ const useBulkActions = (data: TRowData[] | undefined) => {
     const rows = data.filter((row) => row._id) as Required<TRowData>[];
     setCheckBoxes(
       rows.map((row) => ({
-        id: row._id,
+        id: row._id?.toString(),
         checked: false,
         isPinned: row.isPinned,
       })),

@@ -15,10 +15,12 @@ function SuccessModal(): JSX.Element {
     rightButtonLink,
     leftButtonText,
     rightButtonText,
+    cancelLink,
   } = useAppSelector((state) => state.notifyModals);
 
   const handleCloseModal = () => {
     dispatch(closeNotifyModal());
+    if (cancelLink) router.push(cancelLink);
   };
 
   const gotoLink = (link: string | undefined) => {
@@ -35,7 +37,7 @@ function SuccessModal(): JSX.Element {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="modal-box cursor-default rounded-lg pb-10 mb-16 max-w-3xl flex md:items-start gap-x-4 relative flex-col md:flex-row items-center text-center gap-y-2"
+        className="modal-box cursor-default rounded-lg pb-10 mb-16 max-w-3xl w-fit pr-12 flex md:items-start gap-x-4 relative flex-col md:flex-row items-center text-center gap-y-2"
       >
         <div className="mt-0.5 flex items-center opacity-90 text-2xl md:text-lg">
           <BsFillCheckCircleFill className="text-success" />

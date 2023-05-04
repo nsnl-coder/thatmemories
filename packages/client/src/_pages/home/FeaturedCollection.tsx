@@ -1,11 +1,12 @@
 import RowContainer from '@src/components/container/RowContainer';
 import FilePreview from '@src/components/filePreview/FilePreview';
 import Rating from '@src/components/rating/Rating';
+import { ObjectId } from '@src/types/objectId';
 import { ICollection } from '@thatmemories/yup';
 import CollectionHeading from './CollectionHeading';
 
 interface Props {
-  featuredCollections: ICollection[] | undefined;
+  featuredCollections: ICollection[] | ObjectId[];
 }
 
 function FeaturedCollection(props: Props): JSX.Element | null {
@@ -14,6 +15,8 @@ function FeaturedCollection(props: Props): JSX.Element | null {
   if (!featuredCollections || featuredCollections.length < 3) return null;
 
   const collection = featuredCollections[2];
+
+  if (!('_id' in collection)) return null;
 
   return (
     <RowContainer className="py-8 md:py-20 border-b">
