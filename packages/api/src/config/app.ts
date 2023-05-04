@@ -20,11 +20,10 @@ const checkOrigin = (
   origin: any,
   callback: (error: Error | null, staticOrigin?: any) => void,
 ) => {
-  if (!origin) {
-    // TODO: remove this in production
-    callback(null, true);
-    return;
-  }
+  // if (!origin) {
+  //   callback(null, true);
+  //   return;
+  // }
 
   if (whitelist.indexOf(origin) !== -1) {
     callback(null, true);

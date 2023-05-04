@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, boolean, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 
@@ -24,7 +25,7 @@ type UpdateContactPayload = InferType<typeof updateContactSchema>;
 type UpdateContactsPayload = InferType<typeof updateContactsSchema>;
 
 interface IContact extends UpdateContactPayload {
-  _id: string;
+  _id: Schema.Types.ObjectId;
 }
 
 export { createContactSchema, updateContactSchema, updateContactsSchema };

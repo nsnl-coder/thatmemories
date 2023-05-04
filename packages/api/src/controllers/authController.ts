@@ -35,7 +35,7 @@ const resWithCookie = (
   statusCode: number,
   message: string,
 ) => {
-  const jwtToken = signJwtToken(user._id!);
+  const jwtToken = signJwtToken(user._id.toString());
 
   res.cookie('jwt', jwtToken, {
     httpOnly: true,

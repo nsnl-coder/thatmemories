@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, object, string } from 'yup';
 
 const shippingAddressSchema = object({
@@ -10,7 +11,7 @@ const shippingAddressSchema = object({
 });
 
 interface IShippingAddress extends InferType<typeof shippingAddressSchema> {
-  _id: string;
+  _id: Schema.Types.ObjectId;
 }
 
 export { shippingAddressSchema };

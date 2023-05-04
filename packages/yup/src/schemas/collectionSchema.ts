@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, boolean, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 
@@ -14,7 +15,7 @@ const updateCollectionSchema = createCollectionSchema;
 const updateCollectionsSchema = createCollectionSchema.concat(updateList);
 
 export interface ICollection extends CreateCollectionPayload {
-  _id: string;
+  _id: Schema.Types.ObjectId;
   slug: string;
   name?: string;
 }

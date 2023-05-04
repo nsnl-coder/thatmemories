@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, array, number, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 
@@ -22,8 +23,8 @@ const updateMenuSchema = createMenuSchema;
 const updateMenusSchema = createMenuSchema.concat(updateList);
 
 interface IMenu extends Omit<InferType<typeof createMenuSchema>, 'childMenus'> {
-  _id: string;
-  childMenus: string[] | IMenu[];
+  _id: Schema.Types.ObjectId;
+  childMenus: Schema.Types.ObjectId[] | IMenu[];
 }
 
 export { createMenuSchema, updateMenuSchema, updateMenusSchema };

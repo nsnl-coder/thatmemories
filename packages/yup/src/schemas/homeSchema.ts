@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, array, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 import { ICollection } from './collectionSchema';
@@ -39,10 +40,10 @@ interface IHome
     CreateHomePayload,
     'featuredProducts' | 'featuredCollections' | 'featuredPosts'
   > {
-  _id: string;
-  featuredProducts: IProduct[] | string[];
-  featuredCollections: ICollection[] | string[];
-  featuredPosts: IPost | string[];
+  _id: Schema.Types.ObjectId;
+  featuredProducts: IProduct[] | Schema.Types.ObjectId[];
+  featuredCollections: ICollection[] | Schema.Types.ObjectId[];
+  featuredPosts: IPost[] | Schema.Types.ObjectId[];
 }
 
 export type { IHome, ICarouselItem };

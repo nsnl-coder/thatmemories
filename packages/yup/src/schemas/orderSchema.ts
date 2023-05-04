@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import type { Schema } from 'mongoose';
 import { InferType, array, number, object, string } from 'yup';
 import { shippingAddressSchema } from '../shared/shippingAddressSchema';
 import { updateList } from '../shared/updateList';
@@ -69,8 +69,8 @@ interface IOrder
     InferType<typeof createOrderSchema>,
     'items' | 'shippingMethod'
   > {
-  _id: string;
-  createdBy: Schema.Types.ObjectId;
+  _id: Schema.Types.ObjectId;
+  createdBy: Schema.Types.ObjectId | IUser;
   items: IOrderItem[];
   orderNumber: number;
   subTotal: number;
@@ -94,12 +94,8 @@ interface IOrder
     | 'refunded';
 }
 
-interface IPopulatedOrder extends Omit<IOrder, 'createdBy'> {
-  createdBy: IUser;
-}
-
 export { createOrderSchema, updateOrderSchema, updateOrdersSchema };
-export type { IOrder, IPopulatedOrder, IOrderItem, ICreateOrderPayloadItem };
+export type { IOrder, IOrderItem, ICreateOrderPayloadItem };
 
 export type CreateOrderPayload = InferType<typeof createOrderSchema>;
 export type UpdateOrderPayload = InferType<typeof updateOrderSchema>;

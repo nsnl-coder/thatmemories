@@ -5,7 +5,6 @@ import {
   IOrderItem,
 } from '@thatmemories/yup';
 import { NextFunction, Request, Response } from 'express';
-import mongoose from 'mongoose';
 import { createPaymentIntent } from '../config/stripe';
 import { Order } from '../models/orderModel';
 import { Product } from '../models/productModel';
@@ -34,7 +33,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
 
   const orderDetail: Omit<IOrder, '_id'> = {
     items: updatedItems,
-    createdBy: new mongoose.Schema.Types.ObjectId(req.user!._id),
+    createdBy: req.user!._id,
     fullname,
     email,
     phone,

@@ -86,7 +86,6 @@ export default Product;
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  // fetch product with slug
   const { slug } = params!;
   const id = slug.split('-').at(-1);
   const { data: product } = await fetchData<HttpResponse<IProduct>>(
@@ -94,7 +93,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   );
 
   if (!product) {
-    throw Error('failed to fetch product');
+    return {
+      notFound: true,
+    };
   }
 
   // fetch related product based on collections
@@ -121,13 +122,10 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
     '/api/products?fields=slug&limit=6',
   );
 
-  const paths = res.data?.map((product) => ({
-    params: { slug: `${product.slug}-${product._id}` },
-  }));
-
-  if (!paths?.length) {
-    throw Error('Can not fetch any products');
-  }
+  const paths =
+    res.data?.map((product) => ({
+      params: { slug: `${product.slug}-${product._id}` },
+    })) || [];
 
   return {
     paths,
