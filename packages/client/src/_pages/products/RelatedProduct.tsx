@@ -1,5 +1,5 @@
 import ProductCard from '@src/components/productCard/ProductCard';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 
 interface Props {
   products: IProduct[] | null;

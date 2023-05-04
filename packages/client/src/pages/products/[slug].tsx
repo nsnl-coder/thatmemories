@@ -11,7 +11,7 @@ import { useAppDispatch } from '@src/hooks/redux';
 import useRecentViewedProducts from '@src/hooks/useRecentViewedProducts';
 import { setCarouselImages } from '@src/store/productCarousel';
 import { HttpResponse } from '@src/types/http';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
@@ -98,11 +98,16 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   }
 
   // fetch related product based on collections
-  const collections = product?.collections.join(',');
-  const { data: relatedProducts } = await fetchData<HttpResponse<IProduct[]>>(
-    `/api/products/random?collections=${collections}&limit=6`,
-  );
+  const collections = product?.collections?.join(',');
 
+  let relatedProducts;
+
+  if (collections) {
+    const { data } = await fetchData<HttpResponse<IProduct[]>>(
+      `/api/products/random?collections=${collections}&limit=6`,
+    );
+    relatedProducts = data;
+  }
   return {
     props: {
       product: product || null,

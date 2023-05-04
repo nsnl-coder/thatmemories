@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IOption, IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import { ICartItem } from './cart';
 
-export interface SelectOptionPayload extends IOption {
+export interface SelectOptionPayload {
   variantId: string;
+  optionName?: string | undefined;
+  _id: string;
+  photo?: string;
+  price?: number;
 }
 
 interface CurrentCartItemState
@@ -48,10 +52,8 @@ const currentCartItemSlice = createSlice({
       state.discountPrice = payload.discountPrice || 0;
 
       state.selectedOptions = payload.variants?.map((variant) => {
-        return { ...variant.options[0], variantId: variant._id! } || [];
+        return { ...variant.options[0], variantId: variant._id } || [];
       });
-
-      // TODO: get coorect highest price
     },
     selectOption(state, { payload }: { payload: SelectOptionPayload }) {
       const newOption = payload;

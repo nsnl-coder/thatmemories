@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@src/hooks/redux';
 import useGetOnes from '@src/react-query/query/useGetOnes';
 import queryConfig from '@src/react-query/queryConfig';
 import { addShippingMethod, recalculateCart } from '@src/store/cart';
-import { IShipping } from '@src/yup/shippingSchema';
+import { IShipping } from '@thatmemories/yup';
 import Skeleton from 'react-loading-skeleton';
 import ShippingMethod from './ShippingMethod';
 

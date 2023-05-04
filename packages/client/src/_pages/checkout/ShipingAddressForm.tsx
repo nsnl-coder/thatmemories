@@ -37,11 +37,9 @@ function ShippingAddressForm(): JSX.Element | null {
             phone,
             name: fullname,
             address: {
-              line1: '',
               line2: '',
               postal_code: '',
               city: '',
-              country: '',
               ...address,
             },
           },

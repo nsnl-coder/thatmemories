@@ -1,5 +1,5 @@
 import FilePreview from '@src/components/filePreview/FilePreview';
-import { ICarouselItem } from '@src/yup/homeSchema';
+import { ICarouselItem } from '@thatmemories/yup';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
 

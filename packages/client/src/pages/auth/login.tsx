@@ -1,16 +1,13 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import AuthTab from '@src/_pages/auth/AuthTab';
-import userSchema, { IUser } from '@src/yup/userSchema';
-
-import useLogin from '@react-query/auth/useLogin';
-
-//
 import RowContainer from '@components/container/RowContainer';
 import Input from '@components/form/Input';
 import NotLoggedInUserOnly from '@components/hoc/NotLoggedInUserOnly';
+import { yupResolver } from '@hookform/resolvers/yup';
+import useLogin from '@react-query/auth/useLogin';
+import AuthTab from '@src/_pages/auth/AuthTab';
+import { IUser, loginUserSchema } from '@thatmemories/yup';
 
 function Login(): JSX.Element {
   const {
@@ -18,7 +15,7 @@ function Login(): JSX.Element {
     register,
     formState: { errors, isValidating, isValid },
   } = useForm<IUser>({
-    resolver: yupResolver(userSchema),
+    resolver: yupResolver(loginUserSchema),
   });
 
   const { login, isLoading, httpErrors, reset } = useLogin();

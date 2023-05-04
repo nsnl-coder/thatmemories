@@ -1,5 +1,5 @@
 import { useAppSelector } from '@src/hooks/redux';
-import { IShipping } from '@src/yup/shippingSchema';
+import { IShipping } from '@thatmemories/yup';
 import { BsInfoCircleFill } from 'react-icons/bs';
 
 interface Props {

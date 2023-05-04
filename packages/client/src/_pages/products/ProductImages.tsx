@@ -1,7 +1,7 @@
 import FilePreview from '@src/components/filePreview/FilePreview';
 import { useAppSelector } from '@src/hooks/redux';
 import useReactSlick from '@src/hooks/useReactSlick';
-import { IVariant } from '@src/yup/productSchema';
+import { IVariant } from '@thatmemories/yup';
 import { useEffect } from 'react';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';

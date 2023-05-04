@@ -1,8 +1,8 @@
 import RowContainer from '@components/container/RowContainer';
-import { ICarouselItem } from '@src/yup/homeSchema';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';
 import HeroSectionSlide from './HeroSectionSlide';
+import { ICarouselItem } from '@thatmemories/yup';
 
 interface Props {
   carouselItems: ICarouselItem[] | undefined;

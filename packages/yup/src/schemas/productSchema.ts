@@ -15,10 +15,13 @@ const createProductSchema = object({
       schema.max(price, 'Discount price must be smaller than current price'),
     )
     .label('discountPrice'),
-  images: array().max(20).of(string().max(255)).label('Product images'),
+  images: array()
+    .max(20)
+    .of(string().max(255).required())
+    .label('Product images'),
   previewImages: array()
     .max(5)
-    .of(string().min(1).max(255))
+    .of(string().min(1).max(255).required())
     .label('Preview images'),
   //
   variants: array().of(createVariantSchema).max(100).label('Product variants'),
@@ -31,11 +34,13 @@ const createProductSchema = object({
 const updateProductSchema = createProductSchema;
 const updateProductsSchema = updateProductSchema.concat(updateList);
 
-interface IProduct extends InferType<typeof createProductSchema> {
+interface IProduct
+  extends Omit<InferType<typeof createProductSchema>, 'variants'> {
   _id?: string;
   slug: string;
   numberOfRatings: number;
   ratingsAverage: number;
+  variants: IVariant[];
 }
 
 interface IPopulatedProduct extends Omit<IProduct, 'collections'> {

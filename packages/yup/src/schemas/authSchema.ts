@@ -2,7 +2,7 @@ import { Schema } from 'mongoose';
 import { InferType, array, boolean, mixed, object, string } from 'yup';
 import { shippingAddressSchema } from '../shared/shippingAddressSchema';
 
-const RegisterUserSchema = object({
+const registerUserSchema = object({
   email: string().email().max(150).lowercase().label('email').required(),
   isPinned: boolean().label('isPinned'),
   fullname: string().min(6).max(255).lowercase().label('fullname'),
@@ -14,35 +14,32 @@ const RegisterUserSchema = object({
   profileImage: string().max(255).label('profileImage'),
 });
 
-const updateUserSchema = RegisterUserSchema.pick([
-  'fullname',
-  'phone',
-  'shippingAddress',
-  'profileImage',
-]).shape({
-  password: mixed().test(
-    'is-undefined',
-    'use other route to update password',
-    (value) => value === undefined,
-  ),
-  email: mixed().test(
-    'is-undefined',
-    'use other route to update email',
-    (value) => value === undefined,
-  ),
-});
+const updateUserSchema = registerUserSchema
+  .pick(['fullname', 'phone', 'shippingAddress', 'profileImage'])
+  .shape({
+    password: mixed().test(
+      'is-undefined',
+      'use other route to update password',
+      (value) => value === undefined,
+    ),
+    email: mixed().test(
+      'is-undefined',
+      'use other route to update email',
+      (value) => value === undefined,
+    ),
+  });
 
-const updateUserEmailSchema = RegisterUserSchema.pick(['password']).shape({
+const updateUserEmailSchema = registerUserSchema.pick(['password']).shape({
   newEmail: string().email().max(150).lowercase().label('email').required(),
 });
 
-const updateUserPasswordSchema = RegisterUserSchema.pick(['password']).shape({
+const updateUserPasswordSchema = registerUserSchema.pick(['password']).shape({
   newPassword: string().min(8).max(255).label('password').required(),
 });
 
-const forgotPasswordSchema = RegisterUserSchema.pick(['email']);
-const resetPasswordSchema = RegisterUserSchema.pick(['password']);
-const loginUserSchema = RegisterUserSchema.pick(['email', 'password']);
+const forgotPasswordSchema = registerUserSchema.pick(['email']);
+const resetPasswordSchema = registerUserSchema.pick(['password']);
+const loginUserSchema = registerUserSchema.pick(['email', 'password']);
 
 interface IUser extends CreateUserPayload {
   _id: Schema.Types.ObjectId;
@@ -57,7 +54,7 @@ interface IUser extends CreateUserPayload {
 }
 
 export {
-  RegisterUserSchema,
+  registerUserSchema,
   updateUserSchema,
   updateUserEmailSchema,
   updateUserPasswordSchema,
@@ -68,7 +65,7 @@ export {
 export type { IUser };
 
 export type LoginUserPayload = InferType<typeof loginUserSchema>;
-export type CreateUserPayload = InferType<typeof RegisterUserSchema>;
+export type CreateUserPayload = InferType<typeof registerUserSchema>;
 export type UpdateUserPayload = InferType<typeof updateUserSchema>;
 export type UpdateUserEmailPayload = InferType<typeof updateUserEmailSchema>;
 export type UpdateUserPasswordPayload = InferType<

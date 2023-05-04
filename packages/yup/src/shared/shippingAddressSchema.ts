@@ -2,7 +2,7 @@ import { InferType, object, string } from 'yup';
 
 const shippingAddressSchema = object({
   line1: string().required(),
-  line2: string(),
+  line2: string().nullable(),
   city: string(),
   state: string(),
   postal_code: string(),

@@ -1,7 +1,7 @@
 import RowContainer from '@src/components/container/RowContainer';
 import FilePreview from '@src/components/filePreview/FilePreview';
 import Rating from '@src/components/rating/Rating';
-import { ICollection } from '@src/yup/collectionSchema';
+import { ICollection } from '@thatmemories/yup';
 import CollectionHeading from './CollectionHeading';
 
 interface Props {

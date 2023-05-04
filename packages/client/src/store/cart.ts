@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ICoupon } from '@src/yup/couponSchema';
-import { IOrder } from '@src/yup/orderSchema';
-import { IShipping } from '@src/yup/shippingSchema';
 import { StripeAddressElementChangeEvent } from '@stripe/stripe-js';
+import { ICoupon, IOrder, IShipping } from '@thatmemories/yup';
 import { isEqual, sortBy } from 'lodash';
 import { SelectOptionPayload } from './currentCartItem';
 
@@ -25,14 +23,17 @@ export interface ICartItem {
   finalPrice: number;
 }
 
-interface CartState
-  extends Omit<IOrder, 'items' | 'couponCode' | 'grandTotal'> {
+interface CartState {
   items: Required<ICartItem>[];
-  cartShipping: IShipping;
+  cartShipping: Omit<IShipping, '_id'>;
   cartCoupon: CartCoupon;
   savedToDatabaseAt?: Date | undefined;
   subTotal: number;
   grandTotal: number;
+  shippingAddress: IOrder['shippingAddress'];
+  fullname?: string;
+  shippingMethod?: string;
+  phone?: string;
 }
 
 const initialState: CartState = {
@@ -46,7 +47,10 @@ const initialState: CartState = {
     inDollar: 0,
     inPercentage: 0,
   },
-  shippingAddress: {},
+  shippingAddress: {
+    line1: '',
+    country: '',
+  },
   cartShipping: {
     fees: 0,
   },

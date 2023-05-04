@@ -1,6 +1,6 @@
 import RowContainer from '@src/components/container/RowContainer';
 import FilePreview from '@src/components/filePreview/FilePreview';
-import { ICollection } from '@src/yup/collectionSchema';
+import { ICollection } from '@thatmemories/yup';
 import CollectionHeading from './CollectionHeading';
 
 interface Props {

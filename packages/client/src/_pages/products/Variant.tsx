@@ -1,6 +1,6 @@
 import { useAppSelector } from '@src/hooks/redux';
 import { SelectOptionPayload } from '@src/store/currentCartItem';
-import { IVariant } from '@src/yup/productSchema';
+import { IVariant } from '@thatmemories/yup';
 import Option from './Option';
 
 interface Props {

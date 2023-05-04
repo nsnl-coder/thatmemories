@@ -2,8 +2,12 @@ import axios from '@src/config/axios';
 import { useAppSelector } from '@src/hooks/redux';
 import { openErrorModal } from '@src/store/notifyModals';
 import { HttpError, HttpResponse } from '@src/types/http';
-import orderSchema, { IOrder } from '@src/yup/orderSchema';
 import { useMutation } from '@tanstack/react-query';
+import {
+  CreateOrderPayload,
+  IOrder,
+  createOrderSchema,
+} from '@thatmemories/yup';
 import { useDispatch } from 'react-redux';
 import { withDefaultOnError } from '../queryClient';
 
@@ -12,14 +16,12 @@ type Response = HttpResponse<{
   order: IOrder;
 }>;
 
-type RequestPayload = IOrder;
-
 const useCreateOrder = () => {
   const dispatch = useDispatch();
   const cart = useAppSelector((state) => state.cart);
   const email = useAppSelector((state) => state.auth?.user?.email);
 
-  const newOrder: RequestPayload = {
+  const newOrder: CreateOrderPayload = {
     items: cart.items.map((item) => ({
       ...item,
       product: item._id,
@@ -30,12 +32,12 @@ const useCreateOrder = () => {
     fullname: cart.fullname,
     phone: cart.phone,
     email,
-    shippingMethod: cart.shippingMethod,
+    shippingMethod: cart.shippingMethod || '',
     grandTotal: cart.grandTotal,
     couponCode: cart.cartCoupon.couponCode,
   };
 
-  const mutationFn = async (payload: RequestPayload) => {
+  const mutationFn = async (payload: CreateOrderPayload) => {
     const { data } = await axios<Response>({
       url: '/api/orders',
       method: 'post',
@@ -61,11 +63,14 @@ const useCreateOrder = () => {
   };
 
   const createOrder = async () => {
-    const order = await orderSchema.validate(newOrder, { stripUnknown: true });
+    const order: CreateOrderPayload = await createOrderSchema.validate(
+      newOrder,
+      { stripUnknown: true },
+    );
     mutation.mutate(order);
   };
 
-  const mutation = useMutation<Response, HttpError, IOrder>({
+  const mutation = useMutation<Response, HttpError, CreateOrderPayload>({
     mutationFn,
     onError: withDefaultOnError(onError),
     onSuccess,

@@ -2,7 +2,7 @@ import FilePreview from '@src/components/filePreview/FilePreview';
 import { useAppDispatch, useAppSelector } from '@src/hooks/redux';
 import { selectOption } from '@src/store/currentCartItem';
 import { changeCurrentCarouselImage } from '@src/store/productCarousel';
-import { IOption } from '@src/yup/productSchema';
+import { IOption } from '@thatmemories/yup';
 
 interface Props {
   option: IOption;

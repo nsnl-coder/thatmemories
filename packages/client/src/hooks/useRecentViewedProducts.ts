@@ -1,6 +1,6 @@
 import useGetOnes from '@src/react-query/query/useGetOnes';
 import queryConfig from '@src/react-query/queryConfig';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 

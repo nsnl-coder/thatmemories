@@ -1,4 +1,4 @@
-import { ICollection } from '@src/yup/collectionSchema';
+import { ICollection } from '@thatmemories/yup';
 import Link from 'next/link';
 import { HiArrowLongRight } from 'react-icons/hi2';
 

@@ -5,7 +5,7 @@ import {
   resetCurrentItemState,
   setCurrentCartItem,
 } from '@src/store/currentCartItem';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import { useEffect } from 'react';
 import AddToCart from './AddToCart';
 import ItemQuantity from './ItemQuantity';

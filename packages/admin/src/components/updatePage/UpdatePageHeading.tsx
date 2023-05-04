@@ -6,7 +6,7 @@ import { RequestConfig } from '@react-query/queryConfig';
 import { useRouter } from 'next/router';
 
 interface Props {
-  title: string;
+  title: string | number;
   requestConfig: RequestConfig;
   id: string | undefined;
   status: 'active' | 'draft' | undefined;

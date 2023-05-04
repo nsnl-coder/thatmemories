@@ -1,5 +1,5 @@
 import routesConfig from '@src/config/routesConfig';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

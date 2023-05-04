@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IVariant } from '@src/yup/productSchema';
+import { IVariant } from '@thatmemories/yup';
 
 interface ProductCarouselState {
   currentImgIndex: number;

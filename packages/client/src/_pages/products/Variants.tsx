@@ -1,4 +1,4 @@
-import { IVariant } from '@src/yup/productSchema';
+import { IVariant } from '@thatmemories/yup';
 import Variant from './Variant';
 
 interface Props {

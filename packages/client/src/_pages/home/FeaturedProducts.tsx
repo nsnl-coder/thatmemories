@@ -1,7 +1,7 @@
 import RowContainer from '@components/container/RowContainer';
 import ProductCard from '@components/productCard/ProductCard';
 import useReactSlick from '@src/hooks/useReactSlick';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from 'react-slick';
 

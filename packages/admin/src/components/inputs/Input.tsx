@@ -10,6 +10,7 @@ interface Props extends LabelProps, Children {
   placeholder?: string;
   className?: string;
   control: Control<any>;
+  readonly?: boolean;
 }
 
 function Input(props: Props): JSX.Element {
@@ -25,6 +26,7 @@ function Input(props: Props): JSX.Element {
     className,
     tooltip,
     control,
+    readonly,
   } = props;
 
   const { errors } = useFormState({ control });
@@ -43,7 +45,9 @@ function Input(props: Props): JSX.Element {
           type={type}
           id={fieldName}
           {...register(fieldName)}
-          className={`${className} outline-none border border-gray-300 h-10 px-3 w-full rounded-md placeholder:text-sm ${
+          className={`${className} ${
+            readonly ? 'bg-gray-100 pointer-events-none' : ''
+          } outline-none border border-gray-300 h-10 px-3 w-full rounded-md placeholder:text-sm ${
             errors[fieldName] ? 'border border-red-400' : ''
           }`}
           placeholder={placeholder}

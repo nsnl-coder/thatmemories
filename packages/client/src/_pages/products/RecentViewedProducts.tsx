@@ -1,6 +1,6 @@
 import FilePreview from '@src/components/filePreview/FilePreview';
 import routesConfig from '@src/config/routesConfig';
-import { IProduct } from '@src/yup/productSchema';
+import { IProduct } from '@thatmemories/yup';
 import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 
@@ -24,7 +24,7 @@ function RecentViewedProducts(props: Props): JSX.Element | null {
           className="flex gap-x-6"
         >
           <div className="w-16 h-20 flex-shrink-0">
-            {product.previewImages && product.previewImages.length > 0 && (
+            {product.previewImages && product.previewImages['0'] && (
               <FilePreview
                 width={100}
                 height={250}

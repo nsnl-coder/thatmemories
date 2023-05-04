@@ -29,23 +29,32 @@ const createHomeSchema = object({
 const updateHomeSchema = createHomeSchema;
 const updateHomesSchema = updateHomeSchema.concat(updateList);
 
-interface IHome extends CreateHomePayload {
+interface ICarouselItem extends InferType<typeof carouselItem> {
   _id: string;
+}
+
+interface IHome extends Omit<CreateHomePayload, 'carouselItems'> {
+  _id: string;
+  carouselItems: ICarouselItem[];
 }
 
 interface IPopulatedHome
   extends Omit<
     CreateHomePayload,
-    'featuredProducts' | 'featuredCollections' | 'featuredPosts'
+    | 'featuredProducts'
+    | 'featuredCollections'
+    | 'featuredPosts'
+    | 'carouselItems'
   > {
   featuredProducts: IProduct[];
   featuredCollections: ICollection[];
   featuredPosts: IPost[];
+  carouselItems: ICarouselItem[];
 }
 
 export type CreateHomePayload = InferType<typeof createHomeSchema>;
 export type UpdateHomePayload = CreateHomePayload;
 export type UpdateHomesPayload = CreateHomePayload;
 
-export type { IHome, IPopulatedHome };
+export type { IHome, IPopulatedHome, ICarouselItem };
 export { createHomeSchema, updateHomeSchema, updateHomesSchema };

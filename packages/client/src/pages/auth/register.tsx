@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import AuthTab from '@src/_pages/auth/AuthTab';
-import { IUser, registerSchema } from '@src/yup/userSchema';
 
 import useRegister from '@react-query/auth/useRegister';
 
 import RowContainer from '@components/container/RowContainer';
 import Input from '@components/form/Input';
 import NotLoggedInUserOnly from '@components/hoc/NotLoggedInUserOnly';
+import { IUser, registerUserSchema } from '@thatmemories/yup';
 
 function Register(): JSX.Element {
   const {
@@ -17,7 +17,7 @@ function Register(): JSX.Element {
     register,
     formState: { errors, isValidating, isValid },
   } = useForm<IUser>({
-    resolver: yupResolver(registerSchema),
+    resolver: yupResolver(registerUserSchema),
   });
 
   const { signup, reset, isLoading, httpErrors } = useRegister();

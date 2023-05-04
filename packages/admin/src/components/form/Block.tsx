@@ -1,5 +1,3 @@
-import { Children } from '@src/types/shared';
-
 interface Props {
   blockTitle?: string;
   className?: string;
@@ -10,11 +8,9 @@ function Block(props: Props): JSX.Element {
   const { blockTitle, className } = props;
 
   return (
-    <div
-      className={`w-full rounded-lg py-6 px-6 shadow-lg bg-white flex flex-col gap-y-6 ${className}`}
-    >
-      {blockTitle && <h2 className="font-medium">{blockTitle}</h2>}
-      {props.children}
+    <div className={`w-full rounded-lg py-6 px-6 shadow-lg bg-white  `}>
+      {blockTitle && <h2 className="font-medium mb-8">{blockTitle}</h2>}
+      <div className={'flex flex-col gap-y-6'}>{props.children}</div>
     </div>
   );
 }

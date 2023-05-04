@@ -6,8 +6,8 @@ import {
   removeCouponCode,
 } from '@src/store/cart';
 import { HttpError, HttpResponse } from '@src/types/http';
-import { ICoupon } from '@src/yup/couponSchema';
 import { useMutation } from '@tanstack/react-query';
+import { ICoupon } from '@thatmemories/yup';
 import { withDefaultOnError } from '../queryClient';
 
 interface RequestData {
