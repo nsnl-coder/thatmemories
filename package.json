@@ -1,0 +1,19 @@
+{
+  "name": "thatmemories",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev:api": "yarn workspace @thatmemories/api dev",
+    "dev:client": "yarn workspace @thatmemories/client dev",
+    "dev:admin": "yarn workspace @thatmemories/admin dev",
+    "dev": "lerna run dev --parallel"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  }
+}

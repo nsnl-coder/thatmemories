@@ -1,0 +1,7 @@
+node_modules
+ignore
+.env
+.env.prod
+.env.dev
+scripts
+build

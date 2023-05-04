@@ -1,0 +1,47 @@
+@import './table.scss';
+@import './editor.scss';
+@import './nprogress.scss';
+
+//
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .hiddden-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .small-scrollbar::-webkit-scrollbar {
+    display: initial;
+    width: 4px;
+    height: 2px;
+    background: white;
+  }
+
+  .small-scrollbar::-webkit-scrollbar-thumb {
+    background: #dedede;
+    border-radius: 100vh;
+  }
+  .video-js {
+    aspect-ratio: 16/9;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,35 @@
+.shared-table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.shared-table img {
+  width: 80px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+
+.shared-table tr:hover {
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+.shared-table th {
+  text-align: start;
+  padding: 12px 10px;
+  border-bottom: 1px solid hsla(0, 0%, 86%, 0.87);
+  background: #f9fafb;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.shared-table td {
+  border-bottom: 1px solid hsla(0, 0%, 86%, 0.87);
+  padding: 16px 10px;
+  text-transform: lowercase;
+}
+
+.shared-table tr.selected-row {
+  background: #f9fafb;
+}

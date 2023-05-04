@@ -1,0 +1,23 @@
+{
+  "importSorter.sortConfiguration.customOrderingRules.defaultOrderLevel": 0,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "type": "importMember",
+      "regex": "^$",
+      "orderLevel": 10,
+      "disableSort": true
+    },
+    {
+      "regex": "^@src/",
+      "orderLevel": 10
+    },
+    {
+      "regex": "^@react-query",
+      "orderLevel": 20
+    },
+    {
+      "regex": "^@component",
+      "orderLevel": 40
+    }
+  ]
+}
