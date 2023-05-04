@@ -1,7 +1,11 @@
 import { IMenu } from '@thatmemories/yup';
 import { model, Schema } from 'mongoose';
 
-const menuSchema = new Schema<IMenu>(
+interface IMenuWithObjectId extends Omit<IMenu, 'childMenus'> {
+  childMenus: Schema.Types.ObjectId[];
+}
+
+const menuSchema = new Schema<IMenuWithObjectId>(
   {
     name: {
       type: String,
@@ -38,6 +42,6 @@ const menuSchema = new Schema<IMenu>(
   },
 );
 
-const Menu = model<IMenu>('menu', menuSchema);
+const Menu = model<IMenuWithObjectId>('menu', menuSchema);
 
 export { menuSchema, Menu };

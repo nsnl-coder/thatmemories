@@ -35,8 +35,7 @@ const resWithCookie = (
   statusCode: number,
   message: string,
 ) => {
-  // send back jwt token as cookie
-  const jwtToken = signJwtToken(user._id.toString());
+  const jwtToken = signJwtToken(user._id!);
 
   res.cookie('jwt', jwtToken, {
     httpOnly: true,
@@ -49,12 +48,6 @@ const resWithCookie = (
     message,
     data: user,
   });
-};
-
-const getHashedToken = (token: string) => {
-  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
-
-  return hashedToken;
 };
 
 const isLoginPasswordCorrect = async function (

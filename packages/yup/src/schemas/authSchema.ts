@@ -1,4 +1,3 @@
-import { Schema } from 'mongoose';
 import { InferType, array, boolean, mixed, object, string } from 'yup';
 import { shippingAddressSchema } from '../shared/shippingAddressSchema';
 
@@ -42,7 +41,7 @@ const resetPasswordSchema = registerUserSchema.pick(['password']);
 const loginUserSchema = registerUserSchema.pick(['email', 'password']);
 
 interface IUser extends CreateUserPayload {
-  _id: Schema.Types.ObjectId;
+  _id: string;
   role: 'user' | 'customer' | 'admin' | 'root';
   isVerified: boolean;
   password: string;

@@ -1,7 +1,12 @@
 import { IRating } from '@thatmemories/yup';
 import { Schema, model } from 'mongoose';
 
-const ratingSchema = new Schema<IRating>(
+interface IRatingWithObjectId extends Omit<IRating, 'product' | 'createdBy'> {
+  createdBy: Schema.Types.ObjectId;
+  product: Schema.Types.ObjectId;
+}
+
+const ratingSchema = new Schema<IRatingWithObjectId>(
   {
     createdBy: {
       type: Schema.Types.ObjectId,
@@ -28,6 +33,5 @@ const ratingSchema = new Schema<IRating>(
   },
 );
 
-const Rating = model<IRating>('rating', ratingSchema);
-
+const Rating = model<IRatingWithObjectId>('rating', ratingSchema);
 export { ratingSchema, Rating };

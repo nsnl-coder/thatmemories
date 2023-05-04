@@ -13,6 +13,7 @@ import {
 } from '@thatmemories/yup';
 import * as productController from '../controllers/productController';
 import getReqUser from '../middlewares/getReqUser';
+import parseReqQuery from '../middlewares/parseReqQuery';
 import validateRequest from '../middlewares/validateRequest';
 import { Collection } from '../models/collectionModel';
 import { User } from '../models/userModel';
@@ -21,9 +22,14 @@ const router = express.Router();
 
 router.get('/random', productController.getRandomProducts);
 
-router.get('/:id', productController.getProduct);
+router.get('/:id', parseReqQuery, productController.getProduct);
 
-router.get('/', getReqUser(User), productController.getManyProducts);
+router.get(
+  '/',
+  getReqUser(User),
+  parseReqQuery,
+  productController.getManyProducts,
+);
 
 router.use(requireLogin(User));
 router.use(requireRole('admin'));

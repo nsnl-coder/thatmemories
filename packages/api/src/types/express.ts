@@ -8,6 +8,8 @@ interface ReqQuery {
   page: number;
   itemsPerPage: number;
   skip: number;
+  keyword: string;
+  searchBy: string;
   // file query
   limit: number;
   startAfter: string;

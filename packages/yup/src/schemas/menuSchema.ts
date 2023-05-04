@@ -5,8 +5,8 @@ const createMenuSchema = object({
   name: string().max(255).label('name'),
   status: string()
     .oneOf(['draft', 'active'])
-    .default('draft')
-    .label('Publish status'),
+    .label('Publish status')
+    .default('draft'),
   link: string().max(255).label('link'),
   photo: string().max(255).label('photo'),
   menuType: string().oneOf(['root', 'nested']),
@@ -14,22 +14,20 @@ const createMenuSchema = object({
   ordering: number().min(0).max(9999).label('ordering'),
   childMenus: array()
     .of(string().length(24, 'invalid objectid'))
+    .default([])
     .label('Child menus'),
 });
 
 const updateMenuSchema = createMenuSchema;
 const updateMenusSchema = createMenuSchema.concat(updateList);
 
-interface IMenu extends CreateMenuPayload {
+interface IMenu extends Omit<InferType<typeof createMenuSchema>, 'childMenus'> {
   _id: string;
-}
-
-interface IPopulatedMenu extends Omit<IMenu, 'childMenus'> {
-  childMenus: IMenu;
+  childMenus: string[] | IMenu[];
 }
 
 export { createMenuSchema, updateMenuSchema, updateMenusSchema };
-export type { IMenu, IPopulatedMenu };
+export type { IMenu };
 
 export type CreateMenuPayload = InferType<typeof createMenuSchema>;
 export type UpdateMenuPayload = InferType<typeof updateMenuSchema>;

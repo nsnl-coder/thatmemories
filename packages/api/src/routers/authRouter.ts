@@ -1,7 +1,7 @@
 import {
-  RegisterUserSchema,
   forgotPasswordSchema,
   loginUserSchema,
+  registerUserSchema,
   resetPasswordSchema,
   updateUserEmailSchema,
   updateUserPasswordSchema,
@@ -21,7 +21,7 @@ router.post('/sign-out', authController.signOut);
 
 router.post(
   '/sign-up',
-  validateRequest(RegisterUserSchema),
+  validateRequest(registerUserSchema),
   authController.signUp,
 );
 

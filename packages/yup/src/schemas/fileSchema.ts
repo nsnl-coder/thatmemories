@@ -40,7 +40,7 @@ const createFileUrlSchema = object({
 
 interface CreateFileUrlPayload extends InferType<typeof createFileUrlSchema> {}
 
-interface CreateFileUrlFullResponse {
+export interface CreateFileUrlFullResponse {
   status: 'success';
   data: {
     url: string;
@@ -50,7 +50,7 @@ interface CreateFileUrlFullResponse {
   };
 }
 
-interface GetManyFilesFullReponse {
+export interface GetManyFilesFullReponse {
   status: 'success';
   data: {
     IsTruncated: boolean;
@@ -64,8 +64,4 @@ interface GetManyFilesFullReponse {
 }
 
 export { createFileUrlSchema };
-export type {
-  CreateFileUrlPayload,
-  CreateFileUrlFullResponse,
-  GetManyFilesFullReponse,
-};
+export type { CreateFileUrlPayload };

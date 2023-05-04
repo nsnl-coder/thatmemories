@@ -1,4 +1,3 @@
-import { Schema } from 'mongoose';
 import { InferType, number, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 import { IUser } from './authSchema';
@@ -16,19 +15,12 @@ const updateRatingSchema = createRatingSchema;
 const updateRatingsSchema = createRatingSchema.concat(updateList);
 
 interface IRating
-  extends Omit<InferType<typeof createRatingSchema>, 'product'> {
-  _id: Schema.Types.ObjectId;
-  product: Schema.Types.ObjectId;
-  createdBy: Schema.Types.ObjectId;
-}
-
-interface IPopulatedRating extends Omit<IRating, 'createdBy'> {
-  createdBy: IUser;
+  extends Omit<InferType<typeof createRatingSchema>, 'createdBy'> {
+  createdBy: IUser | string;
 }
 
 export { createRatingSchema, updateRatingSchema, updateRatingsSchema };
-export type { IRating, IPopulatedRating };
-
+export type { IRating };
 export type CreateRatingPayload = InferType<typeof createRatingSchema>;
 export type UpdateRatingPayload = InferType<typeof updateRatingSchema>;
 export type UpdateRatingsPayload = InferType<typeof updateRatingsSchema>;

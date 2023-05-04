@@ -5,6 +5,7 @@ import { IPost } from './postSchema';
 import { IProduct } from './productSchema';
 
 const carouselItem = object({
+  _id: string().transform((v) => undefined),
   photo: string().max(255).label('photo'),
   title: string().max(255).label('Carousel title'),
   description: string().max(500).label('Carousel description'),
@@ -17,44 +18,35 @@ const createHomeSchema = object({
   carouselItems: array().of(carouselItem).label('Carousel items'),
   featuredProducts: array()
     .of(string().length(24, 'Invalid object id'))
+    .default([])
     .label('Featured products'),
   featuredCollections: array()
     .of(string().length(24, 'Invalid object id'))
+    .default([])
     .label('Featured collections'),
   featuredPosts: array()
     .of(string().length(24, 'Invalid object id'))
+    .default([])
     .label('Featured posts'),
 });
 
 const updateHomeSchema = createHomeSchema;
 const updateHomesSchema = updateHomeSchema.concat(updateList);
 
-interface ICarouselItem extends InferType<typeof carouselItem> {
-  _id: string;
-}
-
-interface IHome extends Omit<CreateHomePayload, 'carouselItems'> {
-  _id: string;
-  carouselItems: ICarouselItem[];
-}
-
-interface IPopulatedHome
+interface ICarouselItem extends InferType<typeof carouselItem> {}
+interface IHome
   extends Omit<
     CreateHomePayload,
-    | 'featuredProducts'
-    | 'featuredCollections'
-    | 'featuredPosts'
-    | 'carouselItems'
+    'featuredProducts' | 'featuredCollections' | 'featuredPosts'
   > {
-  featuredProducts: IProduct[];
-  featuredCollections: ICollection[];
-  featuredPosts: IPost[];
-  carouselItems: ICarouselItem[];
+  _id: string;
+  featuredProducts: IProduct[] | string[];
+  featuredCollections: ICollection[] | string[];
+  featuredPosts: IPost | string[];
 }
 
-export type CreateHomePayload = InferType<typeof createHomeSchema>;
-export type UpdateHomePayload = CreateHomePayload;
-export type UpdateHomesPayload = CreateHomePayload;
-
-export type { IHome, IPopulatedHome, ICarouselItem };
+export type { IHome, ICarouselItem };
 export { createHomeSchema, updateHomeSchema, updateHomesSchema };
+
+export type CreateHomePayload = InferType<typeof createHomeSchema>;
+export type UpdateHomePayload = InferType<typeof updateHomeSchema>;

@@ -5,6 +5,7 @@ import {
   IOrderItem,
 } from '@thatmemories/yup';
 import { NextFunction, Request, Response } from 'express';
+import mongoose from 'mongoose';
 import { createPaymentIntent } from '../config/stripe';
 import { Order } from '../models/orderModel';
 import { Product } from '../models/productModel';
@@ -26,7 +27,6 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
   )) as any;
 
   const updatedItems: IOrderItem[] = getUpdatedItems(populatedItems);
-
   const { notes, phone, email, fullname, shippingAddress, couponCode } =
     payload;
 
@@ -34,7 +34,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
 
   const orderDetail: Omit<IOrder, '_id'> = {
     items: updatedItems,
-    createdBy: req.user!._id,
+    createdBy: new mongoose.Schema.Types.ObjectId(req.user!._id),
     fullname,
     email,
     phone,
@@ -55,10 +55,13 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
     paymentStatus: 'processing',
   };
 
+  console.log(`client ${order.grandTotal}, server: ${orderInfo.grandTotal} `);
+
   if (orderInfo.grandTotal !== order.grandTotal) {
     return res.status(400).json({
       status: 'success',
       message: 'Received grandTotal and calculated grandTotal are not the same',
+      data: orderInfo,
     });
   }
 
@@ -200,7 +203,6 @@ const getUpdatedItems = (items: ICreateOrderPayloadItem[]): IOrderItem[] => {
       item.quantity = 1;
     }
 
-    price: 25;
     newItem.productName = item.product.name!;
     newItem.variants =
       selectedOptions.map((o) => ({
