@@ -1,13 +1,18 @@
 import RowContainer from '@components/container/RowContainer';
-import LoggedInUserOnly from '@components/hoc/LoggedInUserOnly';
+import VerifiedUserOnly from '@components/hoc/VerifiedUserOnly';
+import OrdersTable from '@src/_pages/profile/OrdersTable';
+import Tabs from '@src/_pages/profile/Tabs';
 
 function Index(): JSX.Element {
   return (
-    <LoggedInUserOnly>
-      <RowContainer>
-        <h1> index </h1>
+    <VerifiedUserOnly>
+      <RowContainer className="py-8">
+        <div className="flex gap-x-8">
+          <Tabs />
+          <OrdersTable />
+        </div>
       </RowContainer>
-    </LoggedInUserOnly>
+    </VerifiedUserOnly>
   );
 }
 

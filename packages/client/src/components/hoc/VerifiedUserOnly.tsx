@@ -11,7 +11,7 @@ interface Props extends Children {}
  * Only return children is user is logged in and verified
  */
 
-function LoggedInUserOnly(props: Props): JSX.Element | null {
+function VerifiedUserOnly(props: Props): JSX.Element | null {
   const { isLoggedIn, user } = useAppSelector((state) => state.auth);
   const router = useRouter();
 
@@ -24,8 +24,7 @@ function LoggedInUserOnly(props: Props): JSX.Element | null {
   }
 
   if (isLoggedIn === undefined) return <LoadingPage />;
-
   return null;
 }
 
-export default LoggedInUserOnly;
+export default VerifiedUserOnly;

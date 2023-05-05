@@ -50,6 +50,7 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
       inDollar: orderInfo.discountInDollar,
       inPercent: orderInfo.discountInPercent,
       couponCode: couponCode || '',
+      s,
     },
     //
     shippingStatus: 'pending',

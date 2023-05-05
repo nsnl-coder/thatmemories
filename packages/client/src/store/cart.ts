@@ -126,6 +126,9 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    resetCartState(state) {
+      return initialState;
+    },
     recalculateCart(state) {
       const { subTotal, grandTotal, cartCoupon, cartShipping, items } =
         calculateCart({
@@ -254,4 +257,5 @@ export const {
   updateShippingInfo,
   removeCouponCode,
   recalculateCart,
+  resetCartState,
 } = cartSlice.actions;

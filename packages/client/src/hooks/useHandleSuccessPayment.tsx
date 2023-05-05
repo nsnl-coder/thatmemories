@@ -1,3 +1,4 @@
+import { resetCartState } from '@src/store/cart';
 import { openSuccessModal } from '@src/store/notifyModals';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -11,6 +12,7 @@ function useHandleSuccessPayment(): null {
 
   useEffect(() => {
     if (redirect_status === 'succeeded') {
+      dispatch(resetCartState());
       dispatch(
         openSuccessModal({
           message:

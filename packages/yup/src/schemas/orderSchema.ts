@@ -92,6 +92,7 @@ interface IOrder
     | 'succeeded'
     | 'processing'
     | 'refunded';
+  createdAt?: Date;
 }
 
 export { createOrderSchema, updateOrderSchema, updateOrdersSchema };
