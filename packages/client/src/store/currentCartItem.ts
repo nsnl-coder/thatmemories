@@ -47,7 +47,7 @@ const currentCartItemSlice = createSlice({
       state.quantity = 1;
       state.image = (payload.images && payload.images[1]) || '';
       state.name = payload.name!;
-      state._id = payload._id!;
+      state._id = payload._id.toString();
       state.price = payload.price!;
       state.discountPrice = payload.discountPrice || 0;
 

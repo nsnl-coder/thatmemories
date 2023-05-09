@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev2": "next -p 3002",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "install:yup": "yarn workspace @thatmemories/yup install",
+    "build:yup": "yarn workspace @thatmemories/yup build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",

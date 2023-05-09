@@ -19,8 +19,11 @@ function RecentViewedProducts(props: Props): JSX.Element | null {
       <h3 className="font-medium mb-6">Recent views</h3>
       {products?.map((product) => (
         <Link
-          href={routesConfig.productDetail(product._id!, product.slug)}
-          key={product._id}
+          href={routesConfig.productDetail(
+            product._id.toString(),
+            product.slug,
+          )}
+          key={product._id.toString()}
           className="flex gap-x-6"
         >
           <div className="w-16 h-20 flex-shrink-0">

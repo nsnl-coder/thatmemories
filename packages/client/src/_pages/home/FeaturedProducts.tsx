@@ -57,7 +57,7 @@ function FeaturedProducts(props: Props): JSX.Element | null {
         <Slider ref={sliderRef} {...settings} className="-mx-3">
           {featuredProducts?.map((product) =>
             '_id' in product ? (
-              <div className="px-3" key={product._id}>
+              <div className="px-3" key={product._id.toString()}>
                 <ProductCard
                   product={product}
                   className="h-60 md:h-80 lg:h-[450px]"

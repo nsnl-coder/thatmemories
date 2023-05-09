@@ -51,7 +51,7 @@ function ShippingMethods(props: Props): JSX.Element | null {
 
   if (shippingMethod && shippingMethods?.length) {
     const index = shippingMethods?.findIndex(
-      (method) => method._id === shippingMethod,
+      (method) => method._id.toString() === shippingMethod,
     );
 
     if (index === -1) {
@@ -65,7 +65,7 @@ function ShippingMethods(props: Props): JSX.Element | null {
       <div className="border rounded-md divide-y bg-base-100">
         {shippingMethods?.map((method) => (
           <ShippingMethod
-            key={method._id}
+            key={method._id.toString()}
             method={method}
             handleAddShipping={handleAddShipping}
           />

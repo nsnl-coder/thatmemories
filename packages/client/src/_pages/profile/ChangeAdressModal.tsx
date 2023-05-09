@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '@src/components/form/Input';
 import { IUser, updateUserSchema } from '@thatmemories/yup';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { FaAddressBook } from 'react-icons/fa';
 import Card from './Card';
@@ -28,9 +29,12 @@ function ChangeAdressModal(): JSX.Element {
           className="modal-box grid grid-cols-2 gap-x-16 max-w-4xl"
         >
           <div className="flex flex-grow">
-            <img
+            <Image
               className="h-full object-cover object-left"
               src="https://files.elasticwebdev.com/6430d4067f5938d58680faeb/3144867396502--4082-acba-d172fa9358eb.png"
+              alt="change address illustration image"
+              width={400}
+              height={400}
             />
           </div>
           <div className="relative flex flex-col gap-y-3 w-60">

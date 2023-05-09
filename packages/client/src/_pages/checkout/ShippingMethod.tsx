@@ -22,7 +22,6 @@ function ShippingMethod(props: Props): JSX.Element {
 
   return (
     <div
-      key={method._id}
       className="px-4 flex gap-x-3 py-2 items-center cursor-pointer"
       onClick={() => handleAddShipping(method)}
     >
@@ -31,7 +30,7 @@ function ShippingMethod(props: Props): JSX.Element {
         name="radio-1"
         className="radio radio-xs"
         readOnly
-        checked={method._id === shippingMethod}
+        checked={method._id.toString() === shippingMethod}
       />
       <div className="flex-grow">
         <div className="text-md first-letter:capitalize">

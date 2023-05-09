@@ -35,7 +35,9 @@ function ProductCard(props: Props): JSX.Element {
   const handleMouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!isSwiping && e.button === 0) {
       if (product._id && product.slug)
-        router.push(routesConfig.productDetail(product._id, product.slug));
+        router.push(
+          routesConfig.productDetail(product._id.toString(), product.slug),
+        );
     }
     setIsSwiping(null);
   };
@@ -68,7 +70,9 @@ function ProductCard(props: Props): JSX.Element {
           ? '0 review'
           : `${product.numberOfRatings} reviews`}
       </div>
-      <Link href={routesConfig.productDetail(product._id!, product.slug)}>
+      <Link
+        href={routesConfig.productDetail(product._id.toString(), product.slug)}
+      >
         <span className="text-sm font-medium cursor-pointer line-clamp-2">
           {product.name}
         </span>

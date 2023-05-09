@@ -1,4 +1,4 @@
-import NavLink from '@components/navlink/NavLink';
+import NavLink from '@components/navLink/NavLink';
 
 function AuthTab(): JSX.Element {
   return (

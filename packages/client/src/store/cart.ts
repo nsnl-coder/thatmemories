@@ -137,11 +137,14 @@ const cartSlice = createSlice({
           cartShipping: state.cartShipping,
         });
 
-      state.grandTotal = grandTotal;
-      state.subTotal = subTotal;
-      state.cartCoupon = cartCoupon;
-      state.cartShipping = cartShipping;
-      state.items = items;
+      return {
+        ...state,
+        grandTotal,
+        subTotal,
+        cartCoupon,
+        cartShipping,
+        items,
+      };
     },
     addItemToCart(state, { payload }: { payload: Required<ICartItem> }) {
       const newItem = payload;
@@ -214,18 +217,31 @@ const cartSlice = createSlice({
     addCouponCode(state, { payload }: { payload: ICoupon }) {
       const coupon = payload;
 
-      state.cartCoupon = {
+      const cartCoupon = {
         ...coupon,
         inDollar: 0,
         inPercentage: 0,
       };
+      return {
+        ...state,
+        cartCoupon,
+      };
     },
     removeCouponCode(state) {
-      state.cartCoupon = initialState.cartCoupon;
+      return {
+        ...state,
+        cartCoupon: initialState.cartCoupon,
+      };
     },
     addShippingMethod(state, { payload }: { payload: IShipping }) {
-      state.cartShipping = payload;
-      state.shippingMethod = payload._id;
+      const cartShipping = payload;
+      const shippingMethod = payload._id.toString();
+
+      return {
+        ...state,
+        cartShipping,
+        shippingMethod,
+      };
     },
     restoreCartFromLocalStorage(state, action) {
       const cart = action.payload;

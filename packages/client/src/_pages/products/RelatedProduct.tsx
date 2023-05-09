@@ -20,7 +20,7 @@ function RelatedProduct(props: Props): JSX.Element | null {
             className={`${index > 3 && index <= 6 ? 'hidden md:block' : ''} ${
               index >= 4 ? 'lg:hidden' : ''
             }`}
-            key={product._id}
+            key={product._id.toString()}
           >
             <ProductCard
               product={product}

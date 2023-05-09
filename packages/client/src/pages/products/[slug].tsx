@@ -52,7 +52,10 @@ function Product(props: Props): JSX.Element | null {
       <BreadCrumb
         paths={[
           {
-            link: routesConfig.productDetail(product._id!, product.slug),
+            link: routesConfig.productDetail(
+              product._id.toString(),
+              product.slug,
+            ),
             text: product.name!,
           },
         ]}
