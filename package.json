@@ -8,7 +8,11 @@
     "dev:api": "yarn workspace @thatmemories/api dev",
     "dev:client": "yarn workspace @thatmemories/client dev",
     "dev:admin": "yarn workspace @thatmemories/admin dev",
-    "dev": "lerna run dev --parallel"
+    "dev": "lerna run dev --parallel",
+    "install:yup": "yarn workspace @thatmemories/yup install",
+    "install:admin": "yarn workspace @thatmemories/admin install",
+    "build:yup": "yarn workspace @thatmemories/yup build",
+    "build:admin": "yarn workspace @thatmemories/admin build"
   },
   "workspaces": [
     "packages/*"
