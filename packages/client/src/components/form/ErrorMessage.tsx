@@ -1,15 +1,21 @@
+import { ErrorMessage as Errors } from '@hookform/error-message';
+
 interface Props {
   errors: any;
   fieldName: string;
 }
 
-function ErrorMessage(props: Props): JSX.Element {
+function ErrorMessage(props: Props): JSX.Element | null {
   const { errors, fieldName } = props;
 
   return (
-    <p className="text-sm text-error mt-2 mb-4">
-      {errors && errors[fieldName]?.message}
-    </p>
+    <Errors
+      errors={errors}
+      name={fieldName}
+      render={({ message }) => (
+        <p className="text-sm text-red-400 mt-2">{message}</p>
+      )}
+    />
   );
 }
 

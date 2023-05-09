@@ -1,13 +1,13 @@
 import { Control, useFieldArray, UseFormRegister } from 'react-hook-form';
 import { MdPlaylistAdd } from 'react-icons/md';
-import Variant from './Variant';
-
-import { DRAG_TYPES } from '@src/types/enum';
 
 import Label, { LabelProps } from '@components/form/Label';
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import { DRAG_TYPES } from '@src/types/enum';
 import getRandomString from '@src/utils/getRandomString';
 import { IProduct } from '@thatmemories/yup';
+
+import Variant from './Variant';
 
 interface Props extends LabelProps {
   control: Control<IProduct>;

@@ -1,8 +1,9 @@
 import { useController } from 'react-hook-form';
-import ChildMenu from './ChildMenu';
 
 import getRandomString from '@src/utils/getRandomString';
 import { IMenu } from '@thatmemories/yup';
+
+import ChildMenu from './ChildMenu';
 
 interface Props {
   control: any;

@@ -1,9 +1,10 @@
 import { Control, useController, UseFormRegister } from 'react-hook-form';
 import { BiImageAdd } from 'react-icons/bi';
 import { IoIosRemoveCircle } from 'react-icons/io';
-import FilePreview from '../filePreview/FilePreview';
 
 import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
+
+import FilePreview from '../filePreview/FilePreview';
 
 interface Props {
   control: Control<any>;

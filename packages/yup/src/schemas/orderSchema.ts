@@ -7,7 +7,7 @@ import { IProduct } from './productSchema';
 
 const itemSchema = object({
   product: string().length(24).required(),
-  quantity: number().max(999).default(1),
+  quantity: number().max(999).default(1).typeError('Quantity must be a number'),
   selectedOptions: array().of(string().length(24).required()),
 });
 
@@ -15,7 +15,13 @@ interface ICreateOrderPayloadItem
   extends Omit<InferType<typeof itemSchema>, 'product'> {
   product: Pick<
     IProduct,
-    'name' | 'price' | 'slug' | 'variants' | 'discountPrice' | 'previewImages'
+    | 'name'
+    | 'price'
+    | 'slug'
+    | 'variants'
+    | 'discountPrice'
+    | 'previewImages'
+    | '_id'
   >;
 }
 
@@ -33,7 +39,10 @@ const createOrderSchema = object({
     .label('Phone number'),
   shippingAddress: shippingAddressSchema,
   shippingMethod: string().length(24).required(),
-  grandTotal: number().min(0).max(99999),
+  grandTotal: number()
+    .min(0)
+    .max(99999)
+    .typeError('Grand total must be a number'),
 });
 
 const updateOrderSchema = createOrderSchema
@@ -57,11 +66,18 @@ const updateOrderSchema = createOrderSchema
 const updateOrdersSchema = updateOrderSchema.concat(updateList);
 
 interface IOrderItem {
+  _id?: Schema.Types.ObjectId;
   productName: string;
+  productId: string;
   price: number;
   quantity: number;
   photos: string[];
-  variants: { variantName?: string; optionName?: string }[];
+  variants: {
+    variantName?: string;
+    optionName?: string;
+    _id?: Schema.Types.ObjectId;
+  }[];
+  slug: string;
 }
 
 interface IOrder

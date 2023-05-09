@@ -1,16 +1,14 @@
-import useBulkActions from '@src/hooks/useBulkActions';
-
-import useGetOnes from '@react-query/query/useGetOnes';
-import queryConfig from '@react-query/queryConfig';
-
 import BulkActions from '@components/table/bulkActions/BulkActions';
 import ActionsColumn from '@components/table/columns/ActionsColumn';
 import CheckBoxColumn from '@components/table/columns/CheckBoxColumn';
 import MultipleSelect from '@components/table/customFilter/MultipleSelect';
 import TableWrapper from '@components/table/tableWrapper/TableWrapper';
 import Toolbar from '@components/table/toolbar/Toolbar';
+import useGetOnes from '@react-query/query/useGetOnes';
+import queryConfig from '@react-query/queryConfig';
 import HeaderCheckBox from '@src/components/table/bulkActions/HeaderCheckBox';
 import TableLinkColumn from '@src/components/table/columns/TableLinkColumn';
+import useBulkActions from '@src/hooks/useBulkActions';
 import { IOrder } from '@thatmemories/yup';
 
 const OrderTable = (): JSX.Element => {

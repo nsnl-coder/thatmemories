@@ -45,7 +45,7 @@ const getManyContacts = async (
     sort = '-createdAt', // new to old
     page = 1,
     itemsPerPage = 10,
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
 
   // 0. check how many result
@@ -149,8 +149,7 @@ const updateManyContacts = async (
     });
   }
 
-  const { email, fullname, phone, subject, content, isRead, adminNotes } =
-    payload as IContact;
+  const { email, fullname, content, isRead, adminNotes } = payload as IContact;
 
   const { modifiedCount } = await Contact.updateMany(
     {
@@ -158,7 +157,7 @@ const updateManyContacts = async (
         $in: updateList,
       },
     },
-    { email, fullname, phone, subject, content, isRead, adminNotes },
+    { email, fullname, content, isRead, adminNotes },
     {
       runValidators: true,
     },

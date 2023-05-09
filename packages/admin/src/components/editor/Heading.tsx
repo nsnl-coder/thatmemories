@@ -1,5 +1,7 @@
-import { Editor } from '@tiptap/react';
 import { BsChevronDown } from 'react-icons/bs';
+
+import { Editor } from '@tiptap/react';
+
 import DropdownItem from './DropdownItem';
 
 interface Props {

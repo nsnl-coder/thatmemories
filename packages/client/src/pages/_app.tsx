@@ -2,10 +2,10 @@ import { Jost } from 'next/font/google';
 import { Router } from 'next/router';
 import nprogress from 'nprogress';
 
-import ContextProvider from '@src/contexts/ContextProvider';
-
 import CommonLayout from '@components/layout/CommonLayout';
 import UiContainer from '@components/uiContainer/UiContainer';
+import ContextProvider from '@src/contexts/ContextProvider';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import '@src/styles/globals.scss';
 import 'nprogress/nprogress.css';
@@ -50,6 +50,7 @@ export default function App({
 
         <UiContainer />
         <HooksContainer />
+        <ReactQueryDevtools />
       </div>
     </ContextProvider>
   );

@@ -1,31 +1,25 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-
-import CouponSummary from '@src/_pages/coupons/CouponSummary';
-import getRandomString from '@src/utils/getRandomString';
-//
-
-import useCreateOne from '@react-query/query/useCreateOne';
-import useGetOne from '@react-query/query/useGetOne';
-import useUpdateOne from '@react-query/query/useUpdateOne';
-import queryConfig from '@react-query/queryConfig';
 
 import BigBlocks from '@components/form/BigBlocks';
 import Block from '@components/form/Block';
 import SmallBlocks from '@components/form/SmallBlocks';
 import SubmitBtn from '@components/form/SubmitBtn';
-import Input from '@components/inputs/Input';
 import DateRangeInput from '@components/inputs/date/DateRangeInput';
+import Input from '@components/inputs/Input';
 import UpdatePageHeading from '@components/updatePage/UpdatePageHeading';
 import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
+import { yupResolver } from '@hookform/resolvers/yup';
+//
+import useCreateOne from '@react-query/query/useCreateOne';
+import useGetOne from '@react-query/query/useGetOne';
+import useUpdateOne from '@react-query/query/useUpdateOne';
+import queryConfig from '@react-query/queryConfig';
+import CouponSummary from '@src/_pages/coupons/CouponSummary';
 import SingleSelectInput from '@src/components/inputs/SingleSelectInput';
 import useAlertFormErrors from '@src/hooks/useAlertFormErrors';
-import {
-  ICoupon,
-  createCouponSchema,
-  updateCouponSchema,
-} from '@thatmemories/yup';
+import getRandomString from '@src/utils/getRandomString';
+import { createCouponSchema, ICoupon, updateCouponSchema } from '@thatmemories/yup';
 
 function Create(): JSX.Element {
   const id = useRouter().query.id;

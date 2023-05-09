@@ -1,8 +1,9 @@
 import React from 'react';
-import Gallery from '../gallery/Gallery';
 
 //
 import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
+
+import Gallery from '../gallery/Gallery';
 
 function GalleryContainer(): JSX.Element | null {
   const { isOpen, reject } = useSelectFromGallery();

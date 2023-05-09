@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { ReqQuery } from '../types/express';
 
 interface Filter {
   [key: string]: any;
@@ -35,8 +36,6 @@ const parseReqQuery = (req: Request, res: Response, next: NextFunction) => {
     limit,
     startAfter,
     prefix,
-    keyword,
-    searchBy,
     key,
     filter: {
       ...filterObject,
@@ -44,11 +43,16 @@ const parseReqQuery = (req: Request, res: Response, next: NextFunction) => {
     },
   };
 
-  req.query = query;
+  query.filter;
+
+  req.query = query as ReqQuery;
   next();
 };
 
-function handleSearch(searchBy: string | string[], keyword: string): Filter {
+function handleSearch(
+  searchBy: string | string[] | undefined,
+  keyword: string | undefined,
+): Filter {
   if (!searchBy || !keyword) return {};
   if (typeof keyword !== 'string') return {};
 

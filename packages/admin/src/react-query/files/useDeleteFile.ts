@@ -1,9 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { withDefaultOnError } from '../queryClient';
-
 import axios from '@src/config/axios';
 import { HttpError, HttpResponse } from '@src/types/http';
 import { toastError } from '@src/utils/toast';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { withDefaultOnError } from '../queryClient';
 
 interface RequestData {
   key: string;

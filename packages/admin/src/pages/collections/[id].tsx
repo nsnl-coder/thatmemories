@@ -1,11 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
-import useCreateOne from '@react-query/query/useCreateOne';
-import useGetOne from '@react-query/query/useGetOne';
-import useUpdateOne from '@react-query/query/useUpdateOne';
-import queryConfig from '@react-query/queryConfig';
 //
 import BigBlocks from '@components/form/BigBlocks';
 import Block from '@components/form/Block';
@@ -15,14 +10,15 @@ import FilesInput from '@components/inputs/FilesInput';
 import Input from '@components/inputs/Input';
 import UpdatePageHeading from '@components/updatePage/UpdatePageHeading';
 import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
+import { yupResolver } from '@hookform/resolvers/yup';
+import useCreateOne from '@react-query/query/useCreateOne';
+import useGetOne from '@react-query/query/useGetOne';
+import useUpdateOne from '@react-query/query/useUpdateOne';
+import queryConfig from '@react-query/queryConfig';
 import SingleSelectInput from '@src/components/inputs/SingleSelectInput';
 import Textarea from '@src/components/inputs/Textarea';
 import useAlertFormErrors from '@src/hooks/useAlertFormErrors';
-import {
-  ICollection,
-  createCollectionSchema,
-  updateCollectionSchema,
-} from '@thatmemories/yup';
+import { createCollectionSchema, ICollection, updateCollectionSchema } from '@thatmemories/yup';
 
 function Create(): JSX.Element {
   const id = useRouter().query.id;

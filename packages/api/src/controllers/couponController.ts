@@ -165,7 +165,7 @@ const getManyCoupons = async (
     sort = '-createdAt', // new to old
     page = 1,
     itemsPerPage = 10,
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
 
   // 0. check how many result

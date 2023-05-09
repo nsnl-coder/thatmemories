@@ -50,14 +50,11 @@ const createOrder = async (req: Request, res: Response, next: NextFunction) => {
       inDollar: orderInfo.discountInDollar,
       inPercent: orderInfo.discountInPercent,
       couponCode: couponCode || '',
-      s,
     },
     //
     shippingStatus: 'pending',
     paymentStatus: 'processing',
   };
-
-  console.log(`client ${order.grandTotal}, server: ${orderInfo.grandTotal} `);
 
   if (orderInfo.grandTotal !== order.grandTotal) {
     return res.status(400).json({
@@ -154,7 +151,9 @@ const getUpdatedItems = (items: ICreateOrderPayloadItem[]): IOrderItem[] => {
   items.forEach((item, i) => {
     const newItem: IOrderItem = {
       productName: item.product.name!,
-      photos: [],
+      slug: item.product.slug,
+      productId: item.product._id.toString(),
+      photos: item.product.previewImages || [],
       price: item.product.discountPrice || item.product.price!,
       quantity: item.quantity,
       variants: [],
@@ -195,8 +194,6 @@ const getUpdatedItems = (items: ICreateOrderPayloadItem[]): IOrderItem[] => {
 
     if (photos.length) {
       newItem.photos = photos;
-    } else {
-      newItem.photos = (item.product.previewImages as string[]) || [];
     }
 
     if (!item.quantity) {
@@ -292,7 +289,7 @@ const getManyOrders = async (
     sort = '-createdAt', // new to old
     page = 1,
     itemsPerPage = 10,
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
 
   // 0. check how many result

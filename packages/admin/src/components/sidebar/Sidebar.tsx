@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  AiFillPushpin,
-  AiFillStar,
-  AiOutlineMenu,
-  AiOutlineUserSwitch,
-} from 'react-icons/ai';
+import { AiFillPushpin, AiFillStar, AiOutlineMenu, AiOutlineUserSwitch } from 'react-icons/ai';
 import { BiCategoryAlt, BiCommentDetail } from 'react-icons/bi';
 import { BsMenuButtonWideFill } from 'react-icons/bs';
 import { FaProductHunt, FaShippingFast } from 'react-icons/fa';
@@ -13,12 +8,13 @@ import { IoIosSettings } from 'react-icons/io';
 import { MdCategory, MdHomeWork } from 'react-icons/md';
 import { RiBillLine } from 'react-icons/ri';
 import { TbDiscountCheckFilled } from 'react-icons/tb';
+
+import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
+
 //
 import Logo from './Logo';
 import Section from './Section';
 import SidebarItem from './SidebarItem';
-
-import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
 
 function Sidebar(): JSX.Element {
   const { selectFromGallery } = useSelectFromGallery();

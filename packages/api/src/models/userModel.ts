@@ -1,7 +1,16 @@
-import { Schema, model } from 'mongoose';
+import { IShippingAddress, IUser } from '@thatmemories/yup';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-import { IUser } from '@thatmemories/yup';
+import { Schema, model } from 'mongoose';
+
+const shippingSchema = new Schema<IShippingAddress>({
+  line1: String,
+  line2: String,
+  city: String,
+  state: String,
+  postal_code: String,
+  country: String,
+});
 
 const userSchema = new Schema<IUser>(
   {
@@ -17,7 +26,7 @@ const userSchema = new Schema<IUser>(
     profileImage: String,
     fullname: String,
     phone: String,
-    shippingAddress: String,
+    shippingAddress: shippingSchema,
     password: String,
     isVerified: {
       type: Boolean,

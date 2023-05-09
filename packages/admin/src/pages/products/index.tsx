@@ -1,6 +1,4 @@
-import useGetOnes from '@react-query/query/useGetOnes';
-import queryConfig from '@react-query/queryConfig';
-import useBulkActions from '@src/hooks/useBulkActions';
+import Link from 'next/link';
 
 import BulkActions from '@components/table/bulkActions/BulkActions';
 import HeaderCheckBox from '@components/table/bulkActions/HeaderCheckBox';
@@ -13,8 +11,10 @@ import TableLinkColumn from '@components/table/columns/TableLinkColumn';
 import TableWrapper from '@components/table/tableWrapper/TableWrapper';
 import Thead from '@components/table/thead/Thead';
 import Toolbar from '@components/table/toolbar/Toolbar';
+import useGetOnes from '@react-query/query/useGetOnes';
+import queryConfig from '@react-query/queryConfig';
+import useBulkActions from '@src/hooks/useBulkActions';
 import { IPopulatedProduct } from '@thatmemories/yup';
-import Link from 'next/link';
 
 const ProductTable = (): JSX.Element => {
   const requestConfig = queryConfig.products;

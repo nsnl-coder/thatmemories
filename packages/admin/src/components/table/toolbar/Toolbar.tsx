@@ -1,9 +1,9 @@
+import { Children } from '@src/types/shared';
+
 import MultipleSelect from '../customFilter/MultipleSelect';
 import SingleSelect from '../customFilter/SingleSelect';
 import SearchBar from './SearchBar';
 import SortBar from './SortBar';
-
-import { Children } from '@src/types/shared';
 
 export type Sort = string[][];
 

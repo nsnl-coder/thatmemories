@@ -34,8 +34,12 @@ const getManyMenus = async (
     sort = '-createdAt', // new to old
     page = 1,
     itemsPerPage = 10,
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
+
+  if (req.user?.role !== 'admin') {
+    filter.status = 'active';
+  }
 
   // 0. check how many result
   const matchingResults = await Menu.countDocuments(filter);
@@ -75,7 +79,10 @@ const getManyMenus = async (
   query = query.skip(skip).limit(limit);
 
   // 5. finally await query
-  const menus = await query;
+  const menus = await query.populate('childMenus', null, {
+    //@ts-ignore
+    status: 'active',
+  });
 
   res.status(200).json({
     status: 'success',

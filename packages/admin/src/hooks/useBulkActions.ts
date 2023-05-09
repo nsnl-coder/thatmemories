@@ -1,6 +1,7 @@
-import { ObjectId } from '@src/types/objectId';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+
+import { ObjectId } from '@src/types/objectId';
 
 export interface Checkbox {
   checked: boolean;

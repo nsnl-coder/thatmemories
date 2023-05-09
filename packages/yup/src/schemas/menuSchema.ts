@@ -12,7 +12,11 @@ const createMenuSchema = object({
   photo: string().max(255).label('photo'),
   menuType: string().oneOf(['root', 'nested']),
   position: string().oneOf(['header', 'footer', '']),
-  ordering: number().min(0).max(9999).label('ordering'),
+  ordering: number()
+    .min(0)
+    .max(9999)
+    .label('ordering')
+    .typeError('Ordering must be a number'),
   childMenus: array()
     .of(string().length(24, 'invalid objectid'))
     .default([])

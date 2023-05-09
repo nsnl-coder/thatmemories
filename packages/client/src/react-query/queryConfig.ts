@@ -44,6 +44,11 @@ const queryConfig = {
     pluralName: 'users',
     url: '/api/users',
   },
+  contacts: {
+    singularName: 'contact',
+    pluralName: 'contacts',
+    url: '/api/contacts',
+  },
 };
 
 interface RequestConfig {

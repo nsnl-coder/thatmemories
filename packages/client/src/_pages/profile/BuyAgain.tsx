@@ -1,7 +1,7 @@
 function BuyAgain(): JSX.Element {
   return (
-    <div>
-      <h1> BuyAgain </h1>
+    <div className="w-72 flex-shrink border rounded-lg p-4 bg-base-100">
+      <h3 className="text-xl font-medium"> Buy it again </h3>
     </div>
   );
 }

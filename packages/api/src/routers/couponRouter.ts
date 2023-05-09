@@ -6,8 +6,9 @@ import {
 import express from 'express';
 import { requireLogin, requireRole } from 'express-common-middlewares';
 import * as couponController from '../controllers/couponController';
-import { User } from '../models/userModel';
 import validateRequest from '../middlewares/validateRequest';
+import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.post('/check-coupon-validity', couponController.checkCouponValidity);
 router.use(requireLogin(User));
 router.use(requireRole('admin'));
 
-router.get('/', couponController.getManyCoupons);
+router.get('/', parseReqQuery, couponController.getManyCoupons);
 
 router.post(
   '/',

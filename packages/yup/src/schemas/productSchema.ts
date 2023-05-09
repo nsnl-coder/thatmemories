@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, array, boolean, number, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 import { ICollection } from './collectionSchema';
@@ -9,12 +10,17 @@ const createProductSchema = object({
   overview: string().max(10000).label('overview'),
   description: string().max(20000).label('description'),
   isPinned: boolean().label('isPinned'),
-  price: number().min(0).max(99999).label('price'),
+  price: number()
+    .min(0)
+    .max(99999)
+    .label('price')
+    .typeError('Price must be a number'),
   discountPrice: number()
     .when('price', ([price], schema) =>
       schema.max(price, 'Discount price must be smaller than current price'),
     )
-    .label('discountPrice'),
+    .label('discountPrice')
+    .typeError('Discount price must be a number'),
   images: array()
     .max(20)
     .of(string().max(255).required())
@@ -36,7 +42,7 @@ const updateProductsSchema = updateProductSchema.concat(updateList);
 
 interface IProduct
   extends Omit<InferType<typeof createProductSchema>, 'variants'> {
-  _id?: string;
+  _id: Schema.Types.ObjectId;
   slug: string;
   numberOfRatings: number;
   ratingsAverage: number;

@@ -7,8 +7,9 @@ import {
   updateContactsSchema,
 } from '@thatmemories/yup';
 import * as contactController from '../controllers/contactController';
-import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 import validateRequest from '../middlewares/validateRequest';
+import { User } from '../models/userModel';
 
 const router = express.Router();
 
@@ -22,7 +23,7 @@ router.use(requireLogin(User));
 router.use(requireRole('admin'));
 
 router.get('/:id', contactController.getContact);
-router.get('/', contactController.getManyContacts);
+router.get('/', parseReqQuery, contactController.getManyContacts);
 
 router.put(
   '/:id',

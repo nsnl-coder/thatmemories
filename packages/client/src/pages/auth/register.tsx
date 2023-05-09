@@ -15,12 +15,13 @@ function Register(): JSX.Element {
   const {
     handleSubmit,
     register,
-    formState: { errors, isValidating, isValid },
+    control,
+    formState: { isValidating, isValid },
   } = useForm<IUser>({
     resolver: yupResolver(registerUserSchema),
   });
 
-  const { signup, reset, isLoading, httpErrors } = useRegister();
+  const { signup, reset, httpErrors } = useRegister();
 
   const onSubmit = (data: IUser) => {
     signup(data);
@@ -37,10 +38,13 @@ function Register(): JSX.Element {
       <RowContainer>
         <div className="pt-6 pb-36 max-w-lg mx-auto lg:border lg:px-12 lg:my-12">
           <AuthTab />
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex gap-y-4 flex-col"
+          >
             <Input
               register={register}
-              errors={errors}
+              control={control}
               fieldName="email"
               labelTheme="light"
               placeholder="example@gmail.com"
@@ -48,7 +52,7 @@ function Register(): JSX.Element {
             />
             <Input
               register={register}
-              errors={errors}
+              control={control}
               fieldName="password"
               labelTheme="light"
               placeholder=" "
@@ -58,7 +62,7 @@ function Register(): JSX.Element {
             />
             <Input
               register={register}
-              errors={errors}
+              control={control}
               fieldName="passwordConfirm"
               labelTheme="light"
               placeholder=" "

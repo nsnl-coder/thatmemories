@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { Dispatch, SetStateAction } from 'react';
 import { FaSortDown } from 'react-icons/fa';
+
 import { DisplayTool } from '../toolbar/Toolbar';
 import SingleSelectItem from './SingleSelectItem';
 

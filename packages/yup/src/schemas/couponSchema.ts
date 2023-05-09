@@ -1,3 +1,4 @@
+import type { Schema } from 'mongoose';
 import { InferType, boolean, date, number, object, string } from 'yup';
 import { updateList } from '../shared/updateList';
 
@@ -62,12 +63,12 @@ const updateCouponSchema = createCouponSchema;
 const updateCouponsSchema = createCouponSchema.concat(updateList);
 
 const checkCouponValiditySchema = object({
-  orderTotal: number().required(),
+  orderTotal: number().required().typeError('Order total must be a number'),
   couponCode: string().required(),
 });
 
 export interface ICoupon extends CreateCouponPayload {
-  _id: string;
+  _id: Schema.Types.ObjectId;
   usedCoupons: number;
   isExpired: boolean;
   expiredIn: string;

@@ -7,12 +7,14 @@ import {
   updateMenusSchema,
 } from '@thatmemories/yup';
 import * as menuController from '../controllers/menuController';
-import { User } from '../models/userModel';
+import getReqUser from '../middlewares/getReqUser';
+import parseReqQuery from '../middlewares/parseReqQuery';
 import validateRequest from '../middlewares/validateRequest';
+import { User } from '../models/userModel';
 
 const router = express.Router();
 
-router.get('/', menuController.getManyMenus);
+router.get('/', parseReqQuery, getReqUser(User), menuController.getManyMenus);
 
 router.use(requireLogin(User));
 router.use(requireRole('admin'));

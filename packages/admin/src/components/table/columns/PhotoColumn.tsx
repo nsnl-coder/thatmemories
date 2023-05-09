@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
-import { RequestConfig } from '@react-query/queryConfig';
-
 import FilePreview from '@components/filePreview/FilePreview';
+import { RequestConfig } from '@react-query/queryConfig';
 
 interface Props {
   id: string | undefined;

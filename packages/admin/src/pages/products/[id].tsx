@@ -1,16 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
-import VariantsInput from '@src/_pages/products/create/VariantsInput';
-import { toastError } from '@src/utils/toast';
-
-import useCreateOne from '@react-query/query/useCreateOne';
-import useGetOne from '@react-query/query/useGetOne';
-import useGetOnes from '@react-query/query/useGetOnes';
-import useUpdateOne from '@react-query/query/useUpdateOne';
-import queryConfig from '@react-query/queryConfig';
 
 import BigBlocks from '@components/form/BigBlocks';
 import Block from '@components/form/Block';
@@ -24,14 +14,17 @@ import Textarea from '@components/inputs/Textarea';
 import UpdatePageHeader from '@components/updatePage/UpdatePageHeader';
 import UpdatePageHeading from '@components/updatePage/UpdatePageHeading';
 import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
+import { yupResolver } from '@hookform/resolvers/yup';
+import useCreateOne from '@react-query/query/useCreateOne';
+import useGetOne from '@react-query/query/useGetOne';
+import useGetOnes from '@react-query/query/useGetOnes';
+import useUpdateOne from '@react-query/query/useUpdateOne';
+import queryConfig from '@react-query/queryConfig';
+import VariantsInput from '@src/_pages/products/create/VariantsInput';
 import SingleSelectInput from '@src/components/inputs/SingleSelectInput';
 import useAlertFormErrors from '@src/hooks/useAlertFormErrors';
-import {
-  createProductSchema,
-  ICollection,
-  IProduct,
-  updateProductSchema,
-} from '@thatmemories/yup';
+import { toastError } from '@src/utils/toast';
+import { createProductSchema, ICollection, IProduct, updateProductSchema } from '@thatmemories/yup';
 
 function Create(): JSX.Element {
   const id = useRouter().query.id;

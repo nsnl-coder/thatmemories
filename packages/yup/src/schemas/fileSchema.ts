@@ -35,7 +35,8 @@ const createFileUrlSchema = object({
           `Video size should be smaller than ${MAX_VIDEO_SIZE}mb`,
         ),
     })
-    .required(),
+    .required()
+    .typeError('File size must be a number'),
 });
 
 interface CreateFileUrlPayload extends InferType<typeof createFileUrlSchema> {}

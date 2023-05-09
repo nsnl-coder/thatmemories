@@ -1,12 +1,13 @@
-import { InfiniteData } from '@tanstack/react-query';
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+
+import { Response } from '@react-query/files/useGetFiles';
+import { InfiniteData } from '@tanstack/react-query';
+
 import FilePreview from '../filePreview/FilePreview';
 import GridSkeleton from '../skeleton/GridSkeleton';
 import FileWrapper from './FileWrapper';
 import UploadLabel from './UploadLabel';
-
-import { Response } from '@react-query/files/useGetFiles';
 
 interface Props {
   s3Files: InfiniteData<Response>;

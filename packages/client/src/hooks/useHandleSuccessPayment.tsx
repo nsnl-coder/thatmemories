@@ -17,8 +17,8 @@ function useHandleSuccessPayment(): null {
         openSuccessModal({
           message:
             'Your order has been placed. We sent you an email with your invoice.',
-          leftButtonLink: '/',
-          leftButtonText: 'see your order',
+          leftButtonLink: '/orders',
+          leftButtonText: 'see your orders',
           rightButtonLink: '/',
           rightButtonText: 'close',
           cancelLink: '/',

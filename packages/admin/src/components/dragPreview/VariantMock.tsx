@@ -1,7 +1,9 @@
-import { IProduct } from '@thatmemories/yup';
 import { Control, useWatch } from 'react-hook-form';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { TbGridDots } from 'react-icons/tb';
+
+import { IProduct } from '@thatmemories/yup';
+
 import Option from './OptionMock';
 
 interface Props {

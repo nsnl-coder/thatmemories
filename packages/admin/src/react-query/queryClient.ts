@@ -1,7 +1,6 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 import { HttpError } from '@src/types/http';
 import { toastError } from '@src/utils/toast';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type OnErrorFn = (error: HttpError) => void;
 

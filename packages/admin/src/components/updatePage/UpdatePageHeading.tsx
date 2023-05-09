@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router';
 import { BiArrowBack } from 'react-icons/bi';
 import { IoMdTrash } from 'react-icons/io';
 
 import useDeleteOne from '@react-query/query/useDeleteOne';
 import { RequestConfig } from '@react-query/queryConfig';
-import { useRouter } from 'next/router';
 
 interface Props {
   title: string | number;

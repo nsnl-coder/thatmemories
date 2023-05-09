@@ -3,19 +3,19 @@ import { Document } from 'mongoose';
 import { HttpError, HttpResponse } from './http';
 
 interface ReqQuery {
-  fields: string;
-  sort: string;
-  page: number;
-  itemsPerPage: number;
-  skip: number;
-  keyword: string;
-  searchBy: string;
+  fields?: string;
+  sort?: string;
+  page?: number;
+  itemsPerPage?: number;
+  skip?: number;
+  keyword?: string;
+  searchBy?: string | string[];
   // file query
-  limit: number;
-  startAfter: string;
-  prefix: string;
-  key: string;
-  filter: {
+  limit?: number;
+  startAfter?: string;
+  prefix?: string;
+  key?: string;
+  filter?: {
     [key: string]: any;
   };
 }

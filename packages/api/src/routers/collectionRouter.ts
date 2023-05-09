@@ -10,11 +10,12 @@ import {
 import * as collectionController from '../controllers/collectionController';
 import validateRequest from '../middlewares/validateRequest';
 import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 
 const router = express.Router();
 
 router.get('/:id', collectionController.getCollection);
-router.get('/', collectionController.getManyCollections);
+router.get('/', parseReqQuery, collectionController.getManyCollections);
 
 router.use(requireLogin(User));
 router.use(requireRole('admin'));

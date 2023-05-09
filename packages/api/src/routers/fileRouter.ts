@@ -4,6 +4,7 @@ import { requireLogin, requireRole } from 'express-common-middlewares';
 import * as filesController from '../controllers/fileController';
 import validateRequest from '../middlewares/validateRequest';
 import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 
 const router = express.Router();
 router.use(requireLogin(User));
@@ -15,7 +16,7 @@ router.post(
   filesController.createPresignedUrl,
 );
 
-router.get('/', filesController.getManyFiles);
+router.get('/', parseReqQuery, filesController.getManyFiles);
 router.delete('/delete-one-file', filesController.deleteFile);
 router.delete('/', filesController.deleteManyFiles);
 

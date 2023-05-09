@@ -1,11 +1,10 @@
-import { useIsMutating } from '@tanstack/react-query';
 import { useEffect } from 'react';
-
-import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
 
 //
 import useDeleteOnes from '@react-query/query/useDeleteOnes';
 import queryConfig from '@react-query/queryConfig';
+import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
+import { useIsMutating } from '@tanstack/react-query';
 
 interface Props {
   isUploading: boolean;

@@ -1,18 +1,18 @@
 import { useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Skeleton from 'react-loading-skeleton';
+
+//
+import useUploadFiles from '@react-query/files/useUploadFiles';
+import { AllowedFilesTypes } from '@src/contexts/GalleryContextProvider';
+import useSelectLocalFiles from '@src/hooks/useSelectLocalFiles';
+
 import FilePreview from '../filePreview/FilePreview';
 //
 import FileWrapper from './FileWrapper';
 import HiddenInput from './HiddenInput';
 import Label from './Label';
 import SelectFromGallery from './SelectFromGallery';
-
-import { AllowedFilesTypes } from '@src/contexts/GalleryContextProvider';
-import useSelectLocalFiles from '@src/hooks/useSelectLocalFiles';
-
-//
-import useUploadFiles from '@react-query/files/useUploadFiles';
 
 interface SelectFilesProps {
   files: string[];

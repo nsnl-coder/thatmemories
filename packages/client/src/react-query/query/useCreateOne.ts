@@ -5,9 +5,10 @@ import { RequestConfig } from '../queryConfig';
 
 import axios from '@src/config/axios';
 import { HttpError, HttpResponse } from '@src/types/http';
+import { ObjectId } from '@src/types/objectId';
 import { toastError, toastSuccess } from '@src/utils/toast';
 
-const useCreateOne = <T extends { _id?: string }>(
+const useCreateOne = <T extends { _id?: ObjectId }>(
   requestConfig: RequestConfig,
 ) => {
   const router = useRouter();
@@ -49,6 +50,7 @@ const useCreateOne = <T extends { _id?: string }>(
     createOne,
     error: mutation.error,
     isCreated: mutation.isSuccess,
+    isError: mutation.isError,
   };
 };
 

@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-//
-import HiddenInput from '../selectFiles/HiddenInput';
-import GalleryContent from './GalleryContent';
-import GalleryHeader from './GalleryHeader';
-
-import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
-import useSelectLocalFiles from '@src/hooks/useSelectLocalFiles';
 
 import useGetFiles from '@react-query/files/useGetFiles';
 import useUploadFiles from '@react-query/files/useUploadFiles';
 import useInfiniteFetch from '@react-query/query/useInfiniteFetch';
+import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
+import useSelectLocalFiles from '@src/hooks/useSelectLocalFiles';
+
+//
+import HiddenInput from '../selectFiles/HiddenInput';
+import GalleryContent from './GalleryContent';
+import GalleryHeader from './GalleryHeader';
 
 function Gallery(): JSX.Element | null {
   const { isOpen } = useSelectFromGallery();

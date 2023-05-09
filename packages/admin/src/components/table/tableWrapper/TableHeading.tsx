@@ -1,8 +1,7 @@
 import Link from 'next/link';
 
-import { Pagination } from '@src/types/http';
-
 import { RequestConfig } from '@react-query/queryConfig';
+import { Pagination } from '@src/types/http';
 
 export interface TableHeadingProps {
   pagination: Pagination | undefined;

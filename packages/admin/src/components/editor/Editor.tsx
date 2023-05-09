@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { Color } from '@tiptap/extension-color';
 import Image from '@tiptap/extension-image';
 import ListItem from '@tiptap/extension-list-item';
@@ -8,7 +10,7 @@ import TableRow from '@tiptap/extension-table-row';
 import TextStyle from '@tiptap/extension-text-style';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useEffect } from 'react';
+
 //
 import Toolbar from './Toolbar';
 

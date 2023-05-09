@@ -27,7 +27,7 @@ interface AddtionalQuery {
 
 const useGetOnes = <T>(
   requestConfig: RequestConfig,
-  options: Options = { includeUrlQuery: true, additionalQuery: {} },
+  options: Options = { includeUrlQuery: false, additionalQuery: {} },
   enabled: boolean = true,
 ) => {
   const queryClient = useQueryClient();

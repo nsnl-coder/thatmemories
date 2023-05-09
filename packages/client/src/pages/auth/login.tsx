@@ -13,6 +13,7 @@ function Login(): JSX.Element {
   const {
     handleSubmit,
     register,
+    control,
     formState: { errors, isValidating, isValid },
   } = useForm<IUser>({
     resolver: yupResolver(loginUserSchema),
@@ -35,9 +36,12 @@ function Login(): JSX.Element {
       <RowContainer>
         <div className="pt-6 pb-36 max-w-lg mx-auto lg:border lg:px-12 lg:my-12">
           <AuthTab />
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-y-4"
+          >
             <Input
-              errors={errors}
+              control={control}
               fieldName="email"
               labelTheme="light"
               register={register}
@@ -46,7 +50,7 @@ function Login(): JSX.Element {
             />
             <Input
               register={register}
-              errors={errors}
+              control={control}
               fieldName="password"
               labelTheme="light"
               label="Password:"

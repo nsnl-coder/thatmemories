@@ -36,7 +36,7 @@ const getRandomProducts = async (
   const {
     fields,
     sort = '-createdAt', // new to old
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
 
   const limit = req.query.limit || 5;
@@ -102,7 +102,7 @@ const getManyProducts = async (
     sort = '-createdAt', // new to old
     page = 1,
     itemsPerPage = 10,
-    filter,
+    filter = {},
   } = req.query as ReqQuery;
 
   if (req.user?.role !== 'admin') {

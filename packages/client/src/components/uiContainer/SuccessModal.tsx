@@ -20,17 +20,18 @@ function SuccessModal(): JSX.Element {
 
   const handleCloseModal = () => {
     dispatch(closeNotifyModal());
-    if (cancelLink) router.push(cancelLink);
   };
 
   const gotoLink = (link: string | undefined) => {
-    if (link) router.push('/cart');
+    if (link) router.push(link);
     handleCloseModal();
   };
 
   return (
     <div
-      onClick={handleCloseModal}
+      onClick={() => {
+        if (cancelLink) gotoLink(cancelLink);
+      }}
       className={`modal cursor-pointer ${
         currentOpenedModal === NOTIFY_MODALS.SUCCESS_MODAL ? 'modal-open' : ''
       }`}

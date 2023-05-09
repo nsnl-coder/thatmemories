@@ -1,6 +1,8 @@
-import { Editor } from '@tiptap/react';
 import { BiTable } from 'react-icons/bi';
 import { BsChevronDown } from 'react-icons/bs';
+
+import { Editor } from '@tiptap/react';
+
 import WithNestedMenu from '../menu/WithNestedMenu';
 import TableCellOptions from './TableCellOptions';
 import TableColumnOptions from './TableColumnOptions';

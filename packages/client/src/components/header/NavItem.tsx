@@ -1,10 +1,19 @@
+import { IMenu } from '@thatmemories/yup';
 import Link from 'next/link';
 
-function NavItem(): JSX.Element {
+interface Props {
+  menu: IMenu;
+}
+
+function NavItem(props: Props): JSX.Element {
+  const { menu } = props;
+
   return (
-    <li className="px-4 cursor-pointer py-2.5">
-      <Link href="/">Women</Link>
-    </li>
+    <div className="px-4 cursor-pointer py-2.5 capitalize hover:underline hover:text-blue-600">
+      <Link href={menu.link || '/'} className="block">
+        {menu.name}
+      </Link>
+    </div>
   );
 }
 

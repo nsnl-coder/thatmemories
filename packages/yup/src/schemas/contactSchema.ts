@@ -5,11 +5,6 @@ import { updateList } from '../shared/updateList';
 const createContactSchema = object({
   email: string().email().label('email').required(),
   fullname: string().max(255).label('fullname').required(),
-  phone: string()
-    .matches(/^[0-9]{9,16}$/, 'Please provide valid phone number')
-    .label('phone')
-    .required(),
-  subject: string().max(100).label('subject').required(),
   content: string().max(255).label('content').required(),
 });
 

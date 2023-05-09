@@ -14,6 +14,8 @@ const orderSchema = new Schema<IOrder>(
     items: [
       {
         productName: String,
+        productId: String,
+        slug: String,
         price: Number,
         quantity: {
           type: Number,

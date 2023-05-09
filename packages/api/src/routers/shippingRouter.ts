@@ -8,12 +8,18 @@ import {
 } from '@thatmemories/yup';
 import * as shippingController from '../controllers/shippingController';
 import getReqUser from '../middlewares/getReqUser';
-import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 import validateRequest from '../middlewares/validateRequest';
+import { User } from '../models/userModel';
 
 const router = express.Router();
 
-router.get('/', getReqUser(User), shippingController.getManyShippings);
+router.get(
+  '/',
+  getReqUser(User),
+  parseReqQuery,
+  shippingController.getManyShippings,
+);
 
 router.use(requireLogin(User));
 router.use(requireRole('admin'));

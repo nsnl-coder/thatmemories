@@ -21,6 +21,8 @@ router.post(
     }
     res.status(200).send('success');
 
+    console.log(event);
+
     // @ts-ignore
     const orderId = event.data?.object?.metadata?.orderId;
     if (!orderId) return;

@@ -1,8 +1,3 @@
-import useBulkActions from '@src/hooks/useBulkActions';
-
-import useGetOnes from '@react-query/query/useGetOnes';
-import queryConfig from '@react-query/queryConfig';
-
 import FilePreview from '@components/filePreview/FilePreview';
 import BulkActions from '@components/table/bulkActions/BulkActions';
 import ActionsColumn from '@components/table/columns/ActionsColumn';
@@ -13,7 +8,10 @@ import MultipleSelect from '@components/table/customFilter/MultipleSelect';
 import TableWrapper from '@components/table/tableWrapper/TableWrapper';
 import Thead from '@components/table/thead/Thead';
 import Toolbar from '@components/table/toolbar/Toolbar';
+import useGetOnes from '@react-query/query/useGetOnes';
+import queryConfig from '@react-query/queryConfig';
 import HeaderCheckBox from '@src/components/table/bulkActions/HeaderCheckBox';
+import useBulkActions from '@src/hooks/useBulkActions';
 import { IMenu } from '@thatmemories/yup';
 
 const MenuTable = (): JSX.Element => {

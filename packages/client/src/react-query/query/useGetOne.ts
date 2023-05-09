@@ -11,7 +11,7 @@ import { toastError } from '@src/utils/toast';
 
 const useGetOne = <T extends FieldValues>(
   requestConfig: RequestConfig,
-  reset: UseFormReset<T>,
+  reset?: UseFormReset<T>,
 ) => {
   const id = useRouter().query.id;
 
@@ -28,7 +28,7 @@ const useGetOne = <T extends FieldValues>(
   };
 
   const onSuccess = (res: HttpResponse<T>) => {
-    reset(res.data);
+    if (reset) reset(res.data);
   };
 
   const res = useQuery<any, HttpError, HttpResponse<T>>({

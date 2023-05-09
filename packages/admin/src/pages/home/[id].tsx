@@ -1,30 +1,25 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
+import BigBlocks from '@components/form/BigBlocks';
+import Block from '@components/form/Block';
+import MultipleSelect from '@components/form/multipleSelect/MultipleSelect';
+import SmallBlocks from '@components/form/SmallBlocks';
+import SubmitBtn from '@components/form/SubmitBtn';
+import Input from '@components/inputs/Input';
+import UpdatePageHeading from '@components/updatePage/UpdatePageHeading';
+import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
+import { yupResolver } from '@hookform/resolvers/yup';
 import useCreateOne from '@react-query/query/useCreateOne';
 import useGetOne from '@react-query/query/useGetOne';
 import useGetOnes from '@react-query/query/useGetOnes';
 import useUpdateOne from '@react-query/query/useUpdateOne';
 import queryConfig from '@react-query/queryConfig';
 import CarouselsInput from '@src/_pages/homes/CarouselsInput';
-
-import BigBlocks from '@components/form/BigBlocks';
-import Block from '@components/form/Block';
-import SmallBlocks from '@components/form/SmallBlocks';
-import SubmitBtn from '@components/form/SubmitBtn';
-import MultipleSelect from '@components/form/multipleSelect/MultipleSelect';
-import Input from '@components/inputs/Input';
-import UpdatePageHeading from '@components/updatePage/UpdatePageHeading';
-import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
 import SingleSelectInput from '@src/components/inputs/SingleSelectInput';
 import useAlertFormErrors from '@src/hooks/useAlertFormErrors';
 import {
-  ICollection,
-  IHome,
-  IProduct,
-  createHomeSchema,
-  updateHomeSchema,
+    createHomeSchema, ICollection, IHome, IProduct, updateHomeSchema
 } from '@thatmemories/yup';
 
 function Create(): JSX.Element {

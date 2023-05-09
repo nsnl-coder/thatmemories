@@ -1,9 +1,8 @@
 import { AiFillDelete } from 'react-icons/ai';
 import { TbGridDots } from 'react-icons/tb';
 
-import { DRAG_TYPES } from '@src/types/enum';
-
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import { DRAG_TYPES } from '@src/types/enum';
 import { IMenu } from '@thatmemories/yup';
 
 interface Props {

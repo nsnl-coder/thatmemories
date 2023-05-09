@@ -16,6 +16,7 @@ import validateRequest from '../middlewares/validateRequest';
 import { Order } from '../models/orderModel';
 import { Shipping } from '../models/shippingModel';
 import { User } from '../models/userModel';
+import parseReqQuery from '../middlewares/parseReqQuery';
 
 const router = express.Router();
 
@@ -31,7 +32,7 @@ router.post(
 );
 
 router.use(requireRole('admin'));
-router.get('/', orderController.getManyOrders);
+router.get('/', parseReqQuery, orderController.getManyOrders);
 
 router.put(
   '/:id',

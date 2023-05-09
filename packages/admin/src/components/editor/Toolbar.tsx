@@ -1,4 +1,3 @@
-import { Editor } from '@tiptap/react';
 import { AiOutlineClear, AiOutlineEnter, AiOutlineStrikethrough } from 'react-icons/ai';
 import { BsFillFileCodeFill, BsImages, BsListOl } from 'react-icons/bs';
 import { FaMarker, FaRedo, FaUndo } from 'react-icons/fa';
@@ -6,14 +5,16 @@ import { GrBlockQuote } from 'react-icons/gr';
 import { HiOutlineListBullet } from 'react-icons/hi2';
 import { MdHorizontalRule } from 'react-icons/md';
 import { RiBold, RiItalic } from 'react-icons/ri';
-//
-import Heading from './Heading';
-import Table from './Table';
-import ToolbarItem from './ToolbarItem';
 
 import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
 import getS3FileUrl from '@src/utils/getFileUrl';
 import imageOrVideo from '@src/utils/imageOrVideo';
+import { Editor } from '@tiptap/react';
+
+//
+import Heading from './Heading';
+import Table from './Table';
+import ToolbarItem from './ToolbarItem';
 
 interface Props {
   editor: Editor | null;

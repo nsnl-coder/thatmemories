@@ -12,3 +12,4 @@ export * from './schemas/productSchema';
 export * from './schemas/ratingSchema';
 export * from './schemas/shippingSchema';
 export * from './schemas/variantSchema';
+export * from './shared/shippingAddressSchema';

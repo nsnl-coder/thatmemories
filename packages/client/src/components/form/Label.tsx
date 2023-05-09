@@ -10,7 +10,7 @@ interface LabelProps {
   tooltip?: string;
 }
 
-function Label(props: LabelProps): JSX.Element {
+function Label(props: LabelProps): JSX.Element | null {
   const {
     fieldName,
     tooltip,
@@ -19,10 +19,12 @@ function Label(props: LabelProps): JSX.Element {
     label,
   } = props;
 
+  if (!label) return null;
+
   return (
     <div
       className={`flex gap-x-3 items-center ${
-        labelTheme === 'light' ? 'mb-3' : 'mb-6'
+        labelTheme === 'light' ? 'mb-1' : 'mb-6'
       }`}
     >
       <label
@@ -33,8 +35,8 @@ function Label(props: LabelProps): JSX.Element {
             : 'font-semibold text-lg capitalize block'
         }`}
       >
-        <span>{label || fieldName}</span>
-        {required && <span className="text-error">*</span>}
+        <span>{label}</span>
+        {required && <span className="text-red-400">*</span>}
       </label>
       {tooltip && <Tooltip dataTip={tooltip} />}
     </div>

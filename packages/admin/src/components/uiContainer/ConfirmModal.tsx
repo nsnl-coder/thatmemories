@@ -1,4 +1,5 @@
 import { AiOutlineClose } from 'react-icons/ai';
+
 import useConfirm from '../../hooks/useConfirm';
 
 const ConfirmModal = () => {

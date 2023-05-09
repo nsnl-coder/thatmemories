@@ -1,7 +1,7 @@
-import FilePreview from '../filePreview/FilePreview';
-
 import usePreviewOriginalFile from '@src/hooks/usePreviewOriginalFile';
 import imageOrVideo from '@src/utils/imageOrVideo';
+
+import FilePreview from '../filePreview/FilePreview';
 
 function PreviewOriginalFile(): JSX.Element {
   const { isModalOpen, s3Key, closePreviewModal } = usePreviewOriginalFile();

@@ -9,7 +9,7 @@ const registerUserSchema = object({
   phone: string()
     .matches(/^[0-9]{9,16}$/, 'Please provide valid phone number')
     .label('Phone number'),
-  shippingAddress: array().of(shippingAddressSchema),
+  shippingAddress: shippingAddressSchema,
   password: string().min(8).max(255).label('password').required(),
   profileImage: string().max(255).label('profileImage'),
 });

@@ -1,9 +1,10 @@
 import { useDragLayer, XYCoord } from 'react-dnd';
-import ChildMenuMock from '../dragPreview/ChildMenuMock';
 
 import Option from '@src/_pages/products/create/Option';
 import Variant from '@src/_pages/products/create/Variant';
 import { DRAG_TYPES } from '@src/types/enum';
+
+import ChildMenuMock from '../dragPreview/ChildMenuMock';
 import FilePreview from '../filePreview/FilePreview';
 
 const CustomDragPreview = () => {

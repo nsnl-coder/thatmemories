@@ -1,4 +1,5 @@
 import { Editor } from '@tiptap/react';
+
 import DropdownItem from './DropdownItem';
 
 interface Props {

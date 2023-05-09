@@ -1,15 +1,14 @@
-import { useIsMutating } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import { TbTrashFilled } from 'react-icons/tb';
 
+import useDeleteFile from '@react-query/files/useDeleteFile';
 import useConfirm from '@src/hooks/useConfirm';
 import usePreviewOriginalFile from '@src/hooks/usePreviewOriginalFile';
 import useSelectFromGallery from '@src/hooks/useSelectFromGallery';
 import imageOrVideo from '@src/utils/imageOrVideo';
 import { toastError } from '@src/utils/toast';
-
-import useDeleteFile from '@react-query/files/useDeleteFile';
+import { useIsMutating } from '@tanstack/react-query';
 
 interface Props {
   children: JSX.Element | JSX.Element[];

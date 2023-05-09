@@ -12,6 +12,7 @@ import {
   updateRatingsSchema,
 } from '@thatmemories/yup';
 import * as ratingController from '../controllers/ratingController';
+import parseReqQuery from '../middlewares/parseReqQuery';
 import validateRequest from '../middlewares/validateRequest';
 import { Product } from '../models/productModel';
 import { Rating } from '../models/ratingModel';
@@ -41,7 +42,7 @@ router.delete('/:id', requireOwnership(Rating), ratingController.deleteRating);
 router.use(requireRole('admin'));
 
 router.get('/:id', ratingController.getRating);
-router.get('/', ratingController.getManyRatings);
+router.get('/', parseReqQuery, ratingController.getManyRatings);
 
 router.put(
   '/',

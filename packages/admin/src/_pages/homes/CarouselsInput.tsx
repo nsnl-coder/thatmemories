@@ -1,16 +1,12 @@
 import { Control, useFieldArray, UseFormRegister } from 'react-hook-form';
-import {
-  BsFillArrowDownCircleFill,
-  BsFillArrowUpCircleFill,
-} from 'react-icons/bs';
+import { BsFillArrowDownCircleFill, BsFillArrowUpCircleFill } from 'react-icons/bs';
 import { IoMdTrash } from 'react-icons/io';
 import { MdViewCarousel } from 'react-icons/md';
-
-import { Children } from '@src/types/shared';
 
 import { LabelProps } from '@components/form/Label';
 import FilesInput from '@components/inputs/FilesInput';
 import Input from '@components/inputs/Input';
+import { Children } from '@src/types/shared';
 
 interface Props extends LabelProps, Children {
   register: UseFormRegister<any>;

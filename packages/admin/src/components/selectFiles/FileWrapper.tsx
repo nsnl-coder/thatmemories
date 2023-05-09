@@ -1,9 +1,10 @@
 import { AiFillEye } from 'react-icons/ai';
 import { TbTrashFilled } from 'react-icons/tb';
-import SwapWrapper from '../swapWrapper/SwapWrapper';
 
 import usePreviewOriginalFile from '@src/hooks/usePreviewOriginalFile';
 import { DRAG_TYPES } from '@src/types/enum';
+
+import SwapWrapper from '../swapWrapper/SwapWrapper';
 
 interface Props {
   children: JSX.Element | JSX.Element[];

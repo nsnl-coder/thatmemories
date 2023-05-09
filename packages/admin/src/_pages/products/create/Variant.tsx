@@ -1,12 +1,12 @@
 import { Control, useFieldArray, UseFormRegister } from 'react-hook-form';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { TbGridDots } from 'react-icons/tb';
-import Option from './Option';
-
-import { DRAG_TYPES } from '@src/types/enum';
 
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import { DRAG_TYPES } from '@src/types/enum';
 import { IProduct } from '@thatmemories/yup';
+
+import Option from './Option';
 
 interface Props {
   register: UseFormRegister<IProduct>;

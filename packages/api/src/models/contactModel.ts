@@ -5,8 +5,6 @@ const contactSchema = new Schema<IContact>(
   {
     email: String,
     fullname: String,
-    phone: String,
-    subject: String,
     content: String,
     isRead: Boolean,
     adminNotes: String,

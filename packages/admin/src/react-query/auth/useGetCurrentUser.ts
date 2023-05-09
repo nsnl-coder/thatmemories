@@ -1,10 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-
 import axios from '@src/config/axios';
 //
 import { useAppDispatch } from '@src/hooks/redux';
 import { failToLogin, logUserIn } from '@src/store/auth';
 import { HttpError, HttpResponse } from '@src/types/http';
+import { useQuery } from '@tanstack/react-query';
 import { IUser } from '@thatmemories/yup';
 
 type Response = HttpResponse<IUser>;

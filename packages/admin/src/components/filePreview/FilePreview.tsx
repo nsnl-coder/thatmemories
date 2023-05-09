@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { MdOutlineImageNotSupported } from 'react-icons/md';
-import VideoPlayer, { VideoProps } from './VideoPlayer';
 
 import getS3FileUrl from '@src/utils/getFileUrl';
 import imageOrVideo from '@src/utils/imageOrVideo';
+
+import VideoPlayer, { VideoProps } from './VideoPlayer';
 
 interface Props extends VideoProps {
   src: string;

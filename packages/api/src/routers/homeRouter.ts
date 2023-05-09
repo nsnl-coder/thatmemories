@@ -9,6 +9,7 @@ import * as homeController from '../controllers/homeController';
 import getReqUser from '../middlewares/getReqUser';
 import { User } from '../models/userModel';
 import validateRequest from '../middlewares/validateRequest';
+import parseReqQuery from '../middlewares/parseReqQuery';
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.use(requireRole('admin'));
 
 router.get('/:id', homeController.getHome);
 
-router.get('/', getReqUser(User), homeController.getManyHomes);
+router.get('/', getReqUser(User), parseReqQuery, homeController.getManyHomes);
 
 router.post('/', validateRequest(createHomeSchema), homeController.createHome);
 router.put(

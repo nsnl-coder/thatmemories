@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
-import videojs from 'video.js';
-
 import 'video.js/dist/video-js.css';
 // City
 import '@videojs/themes/dist/city/index.css';
+
+import { useEffect, useRef } from 'react';
+import videojs from 'video.js';
 
 export interface VideoProps {
   autoplay?: boolean;

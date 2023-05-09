@@ -6,8 +6,8 @@ import VerifiedUserOnly from '@src/components/hoc/VerifiedUserOnly';
 function Orders(): JSX.Element {
   return (
     <VerifiedUserOnly>
-      <RowContainer className="py-8">
-        <div className="flex">
+      <RowContainer className="py-8 bg-base-300">
+        <div className="flex gap-x-10">
           <OrdersTable />
           <BuyAgain />
         </div>

@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { HttpResponse } from '@src/types/http';
 import { IUser } from '@thatmemories/yup';
 
