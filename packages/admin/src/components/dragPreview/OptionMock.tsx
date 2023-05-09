@@ -3,9 +3,8 @@ import { AiTwotoneDelete } from 'react-icons/ai';
 import { HiPlusCircle } from 'react-icons/hi2';
 import { TbGridDots } from 'react-icons/tb';
 
-import { IProduct } from '@src/yup/productSchema';
-
 import SelectFromGalleryInput from '@components/inputs/SelectFromGalleryInput';
+import { IProduct } from '@thatmemories/yup';
 
 interface Props {
   index: number;

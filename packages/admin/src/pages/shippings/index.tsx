@@ -54,10 +54,11 @@ const ShippingTable = (): JSX.Element => {
         <tbody>
           {shippings?.map((shipping) => (
             <tr
-              key={shipping._id}
-              onClick={() => toggleRowSelection(shipping._id)}
+              key={shipping._id.toString()}
+              onClick={() => toggleRowSelection(shipping._id.toString())}
               className={
-                !!shipping._id && checkedBoxesIds.includes(shipping._id)
+                !!shipping._id &&
+                checkedBoxesIds.includes(shipping._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -65,7 +66,7 @@ const ShippingTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={shipping._id}
+                id={shipping._id.toString()}
               />
               <TableLinkColumn
                 _id={shipping._id.toString()}
@@ -76,10 +77,13 @@ const ShippingTable = (): JSX.Element => {
               <StatusColumn
                 requestConfig={requestConfig}
                 status={shipping.status}
-                id={shipping._id}
+                id={shipping._id.toString()}
               />
               <td>{shipping.delivery_estimation}</td>
-              <ActionsColumn requestConfig={requestConfig} id={shipping._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={shipping._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

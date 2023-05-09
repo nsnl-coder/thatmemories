@@ -64,7 +64,7 @@ function Create(): JSX.Element {
       reset={reset}
     >
       <UpdatePageHeading
-        id={shipping?._id}
+        id={shipping?._id.toString()}
         requestConfig={requestConfig}
         status={shipping?.status}
         title={shipping?.display_name || 'Add shipping method'}

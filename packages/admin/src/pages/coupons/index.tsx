@@ -69,10 +69,10 @@ const CouponTable = (): JSX.Element => {
         <tbody>
           {coupons?.map((coupon) => (
             <tr
-              key={coupon._id}
-              onClick={() => toggleRowSelection(coupon._id)}
+              key={coupon._id.toString()}
+              onClick={() => toggleRowSelection(coupon._id.toString())}
               className={
-                !!coupon._id && checkedBoxesIds.includes(coupon._id)
+                !!coupon._id && checkedBoxesIds.includes(coupon._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -80,11 +80,11 @@ const CouponTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={coupon._id}
+                id={coupon._id.toString()}
               />
 
               <TableLinkColumn
-                _id={coupon._id}
+                _id={coupon._id.toString()}
                 requestConfig={queryConfig.coupons}
                 text={coupon.name}
               />
@@ -103,7 +103,7 @@ const CouponTable = (): JSX.Element => {
               <StatusColumn
                 requestConfig={requestConfig}
                 status={coupon.status}
-                id={coupon._id}
+                id={coupon._id.toString()}
               />
               <td>
                 {coupon.startDate &&
@@ -114,7 +114,10 @@ const CouponTable = (): JSX.Element => {
                   })}
               </td>
               <td>{coupon.expiredIn}</td>
-              <ActionsColumn requestConfig={requestConfig} id={coupon._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={coupon._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

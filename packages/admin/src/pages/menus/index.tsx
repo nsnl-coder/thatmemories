@@ -68,10 +68,10 @@ const MenuTable = (): JSX.Element => {
         <tbody>
           {menus?.map((menu) => (
             <tr
-              key={menu._id}
-              onClick={() => toggleRowSelection(menu._id)}
+              key={menu._id.toString()}
+              onClick={() => toggleRowSelection(menu._id.toString())}
               className={
-                !!menu._id && checkedBoxesIds.includes(menu._id)
+                !!menu._id && checkedBoxesIds.includes(menu._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -79,7 +79,7 @@ const MenuTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={menu._id}
+                id={menu._id.toString()}
               />
               <td>
                 {menu.photo && (
@@ -89,7 +89,7 @@ const MenuTable = (): JSX.Element => {
                 )}
               </td>
               <TableLinkColumn
-                _id={menu._id}
+                _id={menu._id.toString()}
                 requestConfig={queryConfig.menus}
                 text={menu.name}
               />
@@ -99,12 +99,15 @@ const MenuTable = (): JSX.Element => {
               <StatusColumn
                 requestConfig={requestConfig}
                 status={menu.status}
-                id={menu._id}
+                id={menu._id.toString()}
               />
               <td>
                 <p className="truncate max-w-md">{menu.link}</p>
               </td>
-              <ActionsColumn requestConfig={requestConfig} id={menu._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={menu._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

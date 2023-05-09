@@ -4,9 +4,10 @@ import { RequestConfig } from '../queryConfig';
 
 import axios from '@src/config/axios';
 import { HttpError, HttpResponse } from '@src/types/http';
+import { ObjectId } from '@src/types/objectId';
 import { toastError, toastSuccess } from '@src/utils/toast';
 
-const useUpdateOne = <T extends { _id?: string } = any>(
+const useUpdateOne = <T extends { _id?: ObjectId } = any>(
   requestConfig: RequestConfig,
 ) => {
   const queryClient = useQueryClient();

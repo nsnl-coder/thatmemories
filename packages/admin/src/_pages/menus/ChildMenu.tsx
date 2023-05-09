@@ -2,9 +2,9 @@ import { AiFillDelete } from 'react-icons/ai';
 import { TbGridDots } from 'react-icons/tb';
 
 import { DRAG_TYPES } from '@src/types/enum';
-import { IMenu } from '@src/yup/menuSchema';
 
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import { IMenu } from '@thatmemories/yup';
 
 interface Props {
   menu: IMenu;
@@ -22,7 +22,7 @@ function ChildMenu(props: Props): JSX.Element | null {
     <SwapWrapper
       itemType={DRAG_TYPES.MENU}
       index={index}
-      id={menu._id}
+      id={menu._id.toString()}
       swapBy="id"
       swapById={swapPosition}
       swapOn="hover"
@@ -39,7 +39,7 @@ function ChildMenu(props: Props): JSX.Element | null {
           <AiFillDelete
             size={22}
             className="hover:text-red-400 cursor-pointer"
-            onClick={() => menu._id && removeMenu(menu._id)}
+            onClick={() => menu._id && removeMenu(menu._id.toString())}
           />
           <TbGridDots size={22} className="cursor-pointer" />
         </div>

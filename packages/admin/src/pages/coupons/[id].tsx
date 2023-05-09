@@ -68,7 +68,7 @@ function Create(): JSX.Element {
       reset={reset}
     >
       <UpdatePageHeading
-        id={coupon?._id}
+        id={coupon?._id?.toString()}
         requestConfig={requestConfig}
         status={coupon?.status}
         title={coupon?.couponCode || 'Add coupon'}

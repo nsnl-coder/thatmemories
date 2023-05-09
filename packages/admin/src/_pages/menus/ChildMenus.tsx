@@ -2,7 +2,7 @@ import { useController } from 'react-hook-form';
 import ChildMenu from './ChildMenu';
 
 import getRandomString from '@src/utils/getRandomString';
-import { IMenu } from '@src/yup/menuSchema';
+import { IMenu } from '@thatmemories/yup';
 
 interface Props {
   control: any;
@@ -43,15 +43,20 @@ function ChildMenus(props: Props): JSX.Element {
   const selectedIds: string[] = field.value || [];
   const selectedMenus: IMenu[] = selectedIds.map(
     (id) =>
-      menus.find((menu) => menu._id === id) ||
-      ({ name: 'Not found', _id: getRandomString(24) } as IMenu),
+      menus.find((menu) => menu._id.toString() === id) ||
+      ({
+        name: 'Not found',
+        _id: getRandomString(24) as any,
+        childMenus: [],
+        status: 'draft',
+      } as IMenu),
   );
 
   return (
     <div className="space-y-1">
       {selectedMenus.map((menu, index) => (
         <ChildMenu
-          key={menu._id}
+          key={menu._id.toString()}
           menu={menu}
           swapPosition={swapPosition}
           index={index}

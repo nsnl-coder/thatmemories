@@ -64,10 +64,10 @@ const OrderTable = (): JSX.Element => {
         <tbody>
           {orders?.map((order) => (
             <tr
-              key={order._id}
-              onClick={() => toggleRowSelection(order._id)}
+              key={order._id.toString()}
+              onClick={() => toggleRowSelection(order._id.toString())}
               className={
-                !!order._id && checkedBoxesIds.includes(order._id)
+                !!order._id && checkedBoxesIds.includes(order._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -75,11 +75,11 @@ const OrderTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={order._id}
+                id={order._id.toString()}
               />
               <TableLinkColumn
                 text={order.orderNumber}
-                _id={order._id}
+                _id={order._id.toString()}
                 requestConfig={requestConfig}
               />
               <TableLinkColumn
@@ -91,7 +91,10 @@ const OrderTable = (): JSX.Element => {
               <td>{order.grandTotal}</td>
               <td>{order.shippingStatus}</td>
               <td>{order.paymentStatus}</td>
-              <ActionsColumn requestConfig={requestConfig} id={order._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={order._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

@@ -13,7 +13,7 @@ import TableLinkColumn from '@components/table/columns/TableLinkColumn';
 import TableWrapper from '@components/table/tableWrapper/TableWrapper';
 import Thead from '@components/table/thead/Thead';
 import Toolbar from '@components/table/toolbar/Toolbar';
-import { IPopulatedProduct, IProduct } from '@thatmemories/yup';
+import { IPopulatedProduct } from '@thatmemories/yup';
 import Link from 'next/link';
 
 const ProductTable = (): JSX.Element => {
@@ -68,10 +68,11 @@ const ProductTable = (): JSX.Element => {
         <tbody>
           {products?.map((product) => (
             <tr
-              key={product._id}
-              onClick={() => toggleRowSelection(product._id)}
+              key={product._id.toString()}
+              onClick={() => toggleRowSelection(product._id.toString())}
               className={
-                !!product._id && checkedBoxesIds.includes(product._id)
+                !!product._id &&
+                checkedBoxesIds.includes(product._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -79,27 +80,27 @@ const ProductTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={product._id}
+                id={product._id.toString()}
               />
               <PhotoColumn
-                id={product._id}
+                id={product._id.toString()}
                 requestConfig={queryConfig.products}
                 s3Key={
                   product.previewImages?.length ? product.previewImages[0] : ''
                 }
               />
               <TableLinkColumn
-                _id={product._id}
+                _id={product._id.toString()}
                 requestConfig={queryConfig.products}
                 text={product.name}
               />
               <IsPinnedColumn
                 requestConfig={requestConfig}
                 isPinned={product.isPinned}
-                id={product._id}
+                id={product._id.toString()}
               />
               <StatusColumn
-                id={product._id}
+                id={product._id.toString()}
                 requestConfig={requestConfig}
                 status={product.status}
               />
@@ -107,7 +108,7 @@ const ProductTable = (): JSX.Element => {
                 {product.collections?.map((c) => (
                   <Link
                     href={`${queryConfig.collections.pluralName}/${c._id}`}
-                    key={c._id}
+                    key={c._id.toString()}
                     className="badge badge-outline"
                     onClick={(e) => e.stopPropagation()}
                   >
@@ -118,7 +119,10 @@ const ProductTable = (): JSX.Element => {
               <td>
                 <p className="truncate w-40">{product.slug}</p>
               </td>
-              <ActionsColumn requestConfig={requestConfig} id={product._id} />
+              <ActionsColumn
+                requestConfig={requestConfig}
+                id={product._id.toString()}
+              />
             </tr>
           ))}
         </tbody>

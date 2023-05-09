@@ -1,19 +1,19 @@
 import React from 'react';
-import { Control, UseFormRegister } from 'react-hook-form';
+import { Control, UseFieldArrayInsert, UseFormRegister } from 'react-hook-form';
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { HiPlusCircle } from 'react-icons/hi2';
 import { TbGridDots } from 'react-icons/tb';
 
-import { IProduct } from '@src/yup/productSchema';
-
 import Input from '@components/inputs/Input';
 import SelectFromGalleryInput from '@components/inputs/SelectFromGalleryInput';
+import getRandomString from '@src/utils/getRandomString';
+import { IProduct } from '@thatmemories/yup';
 
 interface Props {
   register: UseFormRegister<IProduct>;
   index: number;
   variantIndex: number;
-  insert: (index: number, value: object | object[]) => void;
+  insert: UseFieldArrayInsert<IProduct, `variants.${number}.options`>;
   remove: (index?: number | number[]) => void;
   control: Control<IProduct>;
 }
@@ -64,7 +64,9 @@ function Option(props: Props): JSX.Element {
         <button
           type="button"
           className="hover:text-blue-500 cursor-pointer"
-          onClick={() => insert(optionIndex + 1, {})}
+          onClick={() =>
+            insert(optionIndex + 1, { _id: getRandomString(24) as any })
+          }
         >
           <HiPlusCircle size={25} />
         </button>

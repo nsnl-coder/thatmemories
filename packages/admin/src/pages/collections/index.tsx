@@ -57,10 +57,11 @@ const CollectionTable = (): JSX.Element => {
         <tbody>
           {collections?.map((collection) => (
             <tr
-              key={collection._id}
-              onClick={() => toggleRowSelection(collection._id)}
+              key={collection._id.toString()}
+              onClick={() => toggleRowSelection(collection._id.toString())}
               className={
-                !!collection._id && checkedBoxesIds.includes(collection._id)
+                !!collection._id &&
+                checkedBoxesIds.includes(collection._id.toString())
                   ? 'selected-row'
                   : ''
               }
@@ -68,7 +69,7 @@ const CollectionTable = (): JSX.Element => {
               <CheckBoxColumn
                 checkedBoxesIds={checkedBoxesIds}
                 handleCheckBoxChange={handleCheckBoxChange}
-                id={collection._id}
+                id={collection._id.toString()}
               />
               <td>
                 {collection.photo && (
@@ -78,26 +79,26 @@ const CollectionTable = (): JSX.Element => {
                 )}
               </td>
               <TableLinkColumn
-                _id={collection._id}
+                _id={collection._id.toString()}
                 requestConfig={queryConfig.collections}
                 text={collection.name}
               />
               <IsPinnedColumn
                 requestConfig={requestConfig}
-                id={collection._id}
+                id={collection._id.toString()}
                 isPinned={collection.isPinned}
               />
               <StatusColumn
                 requestConfig={requestConfig}
                 status={collection.status}
-                id={collection._id}
+                id={collection._id.toString()}
               />
               <td>
                 <p className="truncate max-w-md">{collection.slug}</p>
               </td>
               <ActionsColumn
                 requestConfig={requestConfig}
-                id={collection._id}
+                id={collection._id.toString()}
               />
             </tr>
           ))}

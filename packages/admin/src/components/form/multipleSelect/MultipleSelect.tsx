@@ -1,3 +1,4 @@
+import { ObjectId } from '@src/types/objectId';
 import { useState } from 'react';
 import { useController, useFormState } from 'react-hook-form';
 import { AiOutlineDown } from 'react-icons/ai';
@@ -8,7 +9,7 @@ import SelectedOptions from './SelectedOptions';
 
 export interface Option {
   name?: string;
-  _id?: string;
+  _id: ObjectId;
 }
 
 interface Props extends LabelProps {
@@ -40,7 +41,7 @@ function MultipleSelect(props: Props): JSX.Element {
     (option) =>
       option.name?.toLowerCase().includes(keyword.toLowerCase()) &&
       option._id &&
-      !excludes.includes(option._id),
+      !excludes.includes(option._id.toString()),
   );
 
   const { field } = useController({ name: fieldName, control });
@@ -92,7 +93,7 @@ function MultipleSelect(props: Props): JSX.Element {
         >
           {matchedOptions.map((option) => (
             <MultipleSelectItem
-              key={option._id}
+              key={option._id?.toString()}
               option={option}
               setSelectedOptions={setSelectedOptions}
               selectedOptions={selectedOptions}

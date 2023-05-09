@@ -68,11 +68,12 @@ function Create(): JSX.Element {
       onSubmit={handleSubmit(onSubmit)}
       control={control}
       reset={reset}
+      className="pb-60"
     >
       <UpdatePageHeading
         title={menu?.name || 'Add menu'}
         requestConfig={requestConfig}
-        id={menu?._id}
+        id={menu?._id.toString()}
         status={menu?.status}
       />
       <div className="mx-auto flex gap-x-5 justify-center">
@@ -138,7 +139,7 @@ function Create(): JSX.Element {
               labelTheme="light"
               options={menus}
               label="Child menus:"
-              excludes={menu?._id ? [menu._id] : []}
+              excludes={menu?._id?.toString() ? [menu._id.toString()] : []}
             />
             <ChildMenus control={control} menus={menus} />
           </Block>

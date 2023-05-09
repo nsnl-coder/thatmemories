@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BiSort } from 'react-icons/bi';
 import { BsSortAlphaDown, BsSortAlphaUpAlt } from 'react-icons/bs';
 
@@ -23,19 +23,23 @@ function Thead(props: Props): JSX.Element {
 
     if (typeof sort !== 'string') return;
 
-    const sortArr = sort.split(',');
-    const newSortArr = sortArr.filter(
-      (q) => q !== sortBy && q !== `-${sortBy}`,
-    );
+    if (sort === '') {
+      sort = sortBy;
+    } else {
+      const sortArr = sort.split(',');
+      const newSortArr = sortArr.filter(
+        (q) => q !== sortBy && q !== `-${sortBy}`,
+      );
 
-    if (sortDirection === 'asc') {
-      newSortArr.push(sortBy);
-    }
-    if (sortDirection === 'desc') {
-      newSortArr.push(`-${sortBy}`);
-    }
+      if (sortDirection === 'asc') {
+        newSortArr.push(sortBy);
+      }
+      if (sortDirection === 'desc') {
+        newSortArr.push(`-${sortBy}`);
+      }
 
-    sort = newSortArr.join(',');
+      sort = newSortArr.join(',');
+    }
 
     if (sort.length > 0) {
       router.push({
@@ -44,7 +48,6 @@ function Thead(props: Props): JSX.Element {
           sort,
         },
       });
-    } else {
     }
   };
 

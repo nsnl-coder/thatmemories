@@ -12,8 +12,8 @@ function ChildMenuMock(props: Props): JSX.Element {
   const { menu } = props;
 
   return (
-    <div className="shadow-2xl border">
-      <div className="h-12 flex items-center gap-x-4 justify-between bg-slate-50 px-6">
+    <div className="shadow-2xl border w-full">
+      <div className="h-12 flex items-center gap-x-4 justify-between bg-slate-50 px-6 w-full">
         <div className="flex gap-x-6">
           <span className="w-6 flex text-sm items-center justify-center aspect-square rounded-full">
             {menu.index + 1}

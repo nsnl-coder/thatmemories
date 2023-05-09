@@ -4,9 +4,9 @@ import { TbGridDots } from 'react-icons/tb';
 import Option from './Option';
 
 import { DRAG_TYPES } from '@src/types/enum';
-import { IProduct } from '@src/yup/productSchema';
 
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import { IProduct } from '@thatmemories/yup';
 
 interface Props {
   register: UseFormRegister<IProduct>;

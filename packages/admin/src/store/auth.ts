@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { HttpResponse } from '@src/types/http';
-import { IUser } from '@src/yup/userSchema';
+import { IUser } from '@thatmemories/yup';
 
 interface AuthState {
   isLoggedIn: boolean | undefined;
@@ -18,8 +18,10 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logUserIn(state, { payload }: { payload: HttpResponse<IUser> }) {
-      state.user = payload.data;
-      state.isLoggedIn = true;
+      return {
+        user: payload.data,
+        isLoggedIn: true,
+      };
     },
     failToLogin(state) {
       state.isLoggedIn = false;

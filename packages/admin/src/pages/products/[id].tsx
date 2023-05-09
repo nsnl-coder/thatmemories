@@ -104,7 +104,7 @@ function Create(): JSX.Element {
       <UpdatePageHeading
         title={product?.name || 'Add product'}
         requestConfig={requestConfig}
-        id={product?._id}
+        id={product?._id.toString()}
         status={product?.status}
       />
       <div className="mx-auto flex gap-x-5 justify-center mt-8">

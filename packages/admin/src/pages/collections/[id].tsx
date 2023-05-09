@@ -65,7 +65,7 @@ function Create(): JSX.Element {
       <UpdatePageHeading
         title={collection?.display_name || 'Add collection'}
         requestConfig={requestConfig}
-        id={collection?._id}
+        id={collection?._id?.toString()}
         status={collection?.status}
       />
       <div className="mx-auto flex gap-x-5 justify-center">

@@ -57,7 +57,7 @@ function Update(): JSX.Element {
       <UpdatePageHeading
         title={order?.orderNumber || 'Not found'}
         requestConfig={requestConfig}
-        id={order?._id}
+        id={order?._id.toString()}
         status={undefined}
       />
       <div className="mx-auto flex gap-x-5 justify-center">

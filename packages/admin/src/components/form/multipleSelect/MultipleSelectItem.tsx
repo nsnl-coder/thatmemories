@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import { Option } from './MultipleSelect';
 
 interface Props {
@@ -12,18 +11,18 @@ function MultipleSelectItem(props: Props): JSX.Element {
 
   const handleToggleSelection = () => {
     setSelectedOptions((prev) => {
-      const index = prev.findIndex((_id) => _id === option._id);
+      const index = prev.findIndex((_id) => _id === option._id.toString());
       if (!option._id) return prev;
 
       if (index === -1) return [...prev, option._id];
       else {
-        return [...prev.slice(0, index), ...prev.slice(index + 1)];
+        return [...prev.slice(0, index), ...prev.slice(index + 1)] as any[];
       }
     });
   };
 
   const isChecked =
-    selectedOptions.findIndex((_id) => _id === option._id) !== -1;
+    selectedOptions.findIndex((_id) => _id === option._id.toString()) !== -1;
 
   return (
     <div

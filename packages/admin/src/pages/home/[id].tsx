@@ -20,6 +20,7 @@ import UpdatePageWrapper from '@components/updatePage/UpdatePageWrapper';
 import SingleSelectInput from '@src/components/inputs/SingleSelectInput';
 import useAlertFormErrors from '@src/hooks/useAlertFormErrors';
 import {
+  ICollection,
   IHome,
   IProduct,
   createHomeSchema,
@@ -65,7 +66,7 @@ function Create(): JSX.Element {
   });
 
   // get collections
-  const { data: collections } = useGetOnes<IProduct[]>(
+  const { data: collections } = useGetOnes<ICollection[]>(
     queryConfig.collections,
     {
       includeUrlQuery: false,
@@ -86,7 +87,7 @@ function Create(): JSX.Element {
       <UpdatePageHeading
         title={home?.versionName || 'Create new homepage'}
         requestConfig={requestConfig}
-        id={home?._id}
+        id={home?._id.toString()}
         status={home?.status}
       />
       <div className="mx-auto flex gap-x-5 justify-center">

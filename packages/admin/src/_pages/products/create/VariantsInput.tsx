@@ -3,10 +3,11 @@ import { MdPlaylistAdd } from 'react-icons/md';
 import Variant from './Variant';
 
 import { DRAG_TYPES } from '@src/types/enum';
-import { IProduct } from '@src/yup/productSchema';
 
 import Label, { LabelProps } from '@components/form/Label';
 import SwapWrapper from '@components/swapWrapper/SwapWrapper';
+import getRandomString from '@src/utils/getRandomString';
+import { IProduct } from '@thatmemories/yup';
 
 interface Props extends LabelProps {
   control: Control<IProduct>;
@@ -51,7 +52,12 @@ function VariantsInput(props: Props): JSX.Element {
         ))}
         <button
           type="button"
-          onClick={() => append({ options: [{}] })}
+          onClick={() =>
+            append({
+              _id: getRandomString(24) as any,
+              options: [{ _id: getRandomString(24) as any }],
+            })
+          }
           className="duration-150 border py-2 font-medium hover:font-semibold flex gap-x-3 justify-center hover:bg-gray-50 group text-green-700"
         >
           <span>Add new variant</span>
