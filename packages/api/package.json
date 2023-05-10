@@ -9,6 +9,7 @@
       "./src/test/setup.ts"
     ]
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "prod": "node src/index.js",
     "dev": "ts-node-dev src/index.ts",
@@ -16,7 +17,7 @@
     "testv": "DOTENV_CONFIG_PATH=.env.dev jest --setupFiles=dotenv/config --watchAll --verbose",
     "build": "tsc && cpy 'src/**/!(*.ts)' build",
     "afterBuild": "del src && npm prune --omit=dev",
-    "start": "ts-node src/index.ts"
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",

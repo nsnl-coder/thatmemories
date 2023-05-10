@@ -8,18 +8,16 @@
     "dev:api": "yarn workspace @thatmemories/api dev",
     "dev:client": "yarn workspace @thatmemories/client dev",
     "dev:admin": "yarn workspace @thatmemories/admin dev",
-    "dev": "lerna run dev --parallel",
     "install:yup": "yarn workspace @thatmemories/yup install",
     "install:admin": "yarn workspace @thatmemories/admin install",
     "install:client": "yarn workspace @thatmemories/client install",
     "build:yup": "yarn workspace @thatmemories/yup build",
     "build:admin": "yarn workspace @thatmemories/admin build",
-    "build:client": "yarn workspace @thatmemories/client build"
+    "build:client": "yarn workspace @thatmemories/client build",
+    "build:api": "yarn workspace @thatmemories/api build",
+    "start:api": "yarn workspace @thatmemories/api start"
   },
   "workspaces": [
     "packages/*"
-  ],
-  "devDependencies": {
-    "lerna": "^6.6.1"
-  }
+  ]
 }
